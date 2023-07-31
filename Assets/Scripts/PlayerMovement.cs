@@ -9,10 +9,9 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight = true;
     private bool IsCrouching = false;
     private bool isAttacking = false;
-    //private bool isGrounded = false;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Transform headCheck;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform headCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Collider crouchDisableCollider;
     [SerializeField] public Animator animator;
