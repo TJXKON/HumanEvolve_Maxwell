@@ -9,10 +9,10 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight = true;
     private bool IsCrouching = false;
     private bool isAttacking = false;
-    private bool isGrounded = false;
+    //private bool isGrounded = false;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform headCheck;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Collider crouchDisableCollider;
     [SerializeField] public Animator animator;
@@ -38,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
         Flip();
 
         //Jumping
-        if (Input.GetButtonDown("Jump") && isGrounded && !IsCrouching && !isAttacking){
+        if (Input.GetButtonDown("Jump") && isGrounded() && !IsCrouching && !isAttacking){
             //Change velocity of player object
             rb.velocity = new Vector2(rb.velocity.x, jumpForce*Time.fixedDeltaTime);
             //animator.SetBool("isJumping", true);
         }
-        else if (isGrounded){
+        else if (isGrounded()){
             //animator.SetBool("isJumping",false);
         }
         //Reduce jump foce while fast tapping
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Crouch
-        if ((Input.GetAxisRaw("Vertical")<0) && isGrounded && !isAttacking){
+        if ((Input.GetAxisRaw("Vertical")<0)|| IsHeadHitted() && isGrounded() && !isAttacking){
             IsCrouching = true;
             Debug.Log("Is crouching");
             //Disable upper collider while crouching
@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         else {
             IsCrouching = false;
             if (crouchDisableCollider != null){
-                crouchDisableCollider.enabled = false;
+                crouchDisableCollider.enabled = true;
             }     
 
         }
@@ -96,20 +96,26 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(0f,180f,0f);
         }
     }
-    void OnCollisionEnter(Collision obj)
-    {
-        if (((1<<obj.gameObject.layer) & groundLayer) != 0)
-        {
-            isGrounded = true;
-        }
+
+
+    private bool isGrounded(){
+
+        Vector3 pos = groundCheck.position + Vector3.up*0.9f;
+
+        return Physics.CheckSphere(pos, 0.9f, groundLayer);
     }
 
-    void OnCollisionExit(Collision obj)
-{
-    if (((1<<obj.gameObject.layer) & groundLayer) != 0)
-    {
-        isGrounded = false;
+    private bool IsHeadHitted(){
+
+        if (Physics.Raycast(headCheck.position, Vector3.up, out RaycastHit hit, 1.2f, groundLayer))
+        {
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-}
 
 }
