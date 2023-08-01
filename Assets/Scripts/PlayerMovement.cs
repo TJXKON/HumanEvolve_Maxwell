@@ -26,12 +26,17 @@ public class PlayerMovement : MonoBehaviour
     {
 
         isAttacking = GetComponent<PlayerAttack>().isAttacking;
+
+        if (isAttacking){
+            rb.velocity=Vector3.zero;
+        }
         //Horizontal Movement
         horizontal = Input.GetAxisRaw("Horizontal");
         //animator.SetBool("isCrouching", IsCrouching);
 
         //Move and Ilde animations
         //animator.SetFloat("speed",Mathf.Abs(horizontal));
+
 
         //Flip player object
         Flip();
