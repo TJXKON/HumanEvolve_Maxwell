@@ -7,12 +7,11 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontal;
     private bool facingRight = true;
-    private bool IsCrouching = false;
+    public bool IsCrouching = false;
     private bool isAttacking = false;
-    //private bool isGrounded = false;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Transform headCheck;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform headCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Collider crouchDisableCollider;
     [SerializeField] public Animator animator;
@@ -27,12 +26,17 @@ public class PlayerMovement : MonoBehaviour
     {
 
         isAttacking = GetComponent<PlayerAttack>().isAttacking;
+
+        if (isAttacking&&isGrounded()){
+            rb.velocity=new Vector3(0, rb.velocity.y, rb.velocity.z); //Freeze movement when attacking
+        }
         //Horizontal Movement
         horizontal = Input.GetAxisRaw("Horizontal");
         //animator.SetBool("isCrouching", IsCrouching);
 
         //Move and Ilde animations
         //animator.SetFloat("speed",Mathf.Abs(horizontal));
+
 
         //Flip player object
         Flip();
@@ -98,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private bool isGrounded(){
+    bool isGrounded(){
 
         Vector3 pos = groundCheck.position + Vector3.up*0.9f;
 

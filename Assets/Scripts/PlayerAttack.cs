@@ -23,20 +23,17 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isAttacking){
-            if (Input.GetKeyDown(KeyCode.Return)){
+        if (!isAttacking && !(GetComponent<PlayerMovement>().IsCrouching)){
+            if (Input.GetButtonDown("Fire1")){
 
                 isAttacking = true;
-
-                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)){
-                    cooldown = globalcooldown+charge;
-                    StartCoroutine(SpecialAttack());
-                }
-                else{
-                    cooldown = globalcooldown;    //Set cooldown
-                    Attack();
-                }
-
+                cooldown = globalcooldown;    //Set cooldown
+                Attack();
+            }
+            else if (Input.GetButtonDown("Fire2")){
+                isAttacking = true;
+                cooldown = globalcooldown+charge;
+                StartCoroutine(SpecialAttack());
             }
         }
         else{
@@ -55,9 +52,6 @@ public class PlayerAttack : MonoBehaviour
     void Attack(){
 
         Debug.Log("Attack");
-
-        
-        isAttacking = true;
         //animator.SetTrigger("attack");
         animator.speed = attackRate;    //Animation speed based on attack rate
         //Perform attack
