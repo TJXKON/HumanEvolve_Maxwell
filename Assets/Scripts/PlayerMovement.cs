@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontal;
     private bool facingRight = true;
-    private bool IsCrouching = false;
+    public bool IsCrouching = false;
     private bool isAttacking = false;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Transform groundCheck;
@@ -27,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
         isAttacking = GetComponent<PlayerAttack>().isAttacking;
 
-        if (isAttacking){
-            rb.velocity=Vector3.zero;
+        if (isAttacking&&isGrounded()){
+            rb.velocity=new Vector3(0, rb.velocity.y, rb.velocity.z); //Freeze movement when attacking
         }
         //Horizontal Movement
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private bool isGrounded(){
+    bool isGrounded(){
 
         Vector3 pos = groundCheck.position + Vector3.up*0.9f;
 

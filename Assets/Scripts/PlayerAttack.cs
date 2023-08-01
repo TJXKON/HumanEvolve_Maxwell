@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isAttacking){
+        if (!isAttacking && !(GetComponent<PlayerMovement>().IsCrouching)){
             if (Input.GetButtonDown("Fire1")){
 
                 isAttacking = true;
