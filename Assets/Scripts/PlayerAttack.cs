@@ -51,10 +51,27 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack(){
 
-        Debug.Log("Attack");
         //animator.SetTrigger("attack");
         animator.speed = attackRate;    //Animation speed based on attack rate
         //Perform attack
+        switch (FindObjectOfType<PlayerStatusManager>().style)
+        {
+            case "Normal":
+                FindObjectOfType<PlayerStyles>().Normal();
+                break;
+            case "Fire":
+                FindObjectOfType<PlayerStyles>().Fire();
+                break;
+            case "Laser":
+                FindObjectOfType<PlayerStyles>().Laser();
+                break;
+            case "Gun":
+                FindObjectOfType<PlayerStyles>().Gun();
+                break;
+            case "Magic":
+                FindObjectOfType<PlayerStyles>().Magic();
+                break;
+        }
     }
 
     IEnumerator SpecialAttack(){
@@ -65,5 +82,26 @@ public class PlayerAttack : MonoBehaviour
         //animator.SetTrigger("specialAttack");
         animator.speed = attackRate;    //Animation speed based on attack rate
         Debug.Log("SpecialAttack");
+
+        switch (FindObjectOfType<PlayerStatusManager>().style)
+        {
+            case "Normal":
+                FindObjectOfType<PlayerStyles>().NormalSpecial();
+                break;
+            case "Fire":
+                FindObjectOfType<PlayerStyles>().FireSpecial();
+                break;
+            case "Laser":
+                FindObjectOfType<PlayerStyles>().LaserSpecial();
+                break;
+            case "Gun":
+                FindObjectOfType<PlayerStyles>().GunSpecial();
+                break;
+            case "Magic":
+                FindObjectOfType<PlayerStyles>().MagicSpecial();
+                break;
+        }
     }
+
+
 }

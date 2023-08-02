@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 7174541877448761591}
   - component: {fileID: 4262600192064639682}
   - component: {fileID: 1415117176084197296}
+  - component: {fileID: 8251840194878750231}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -241,7 +242,7 @@ Transform:
   - {fileID: 5068916563428894560}
   - {fileID: 2162764696627783149}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7909502301988423829
 MonoBehaviour:
@@ -373,6 +374,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06cc993e6d00ec42b6b41ac0a03b3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8251840194878750231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269922544020984787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d752c98b73a7a44db509e38645f2a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  punchEffect: {fileID: 0}
+  fireEffect: {fileID: 0}
+  laser: {fileID: 0}
+  gunBullet: {fileID: 0}
+  MagicEffect: {fileID: 0}
+  firePoint: {fileID: 5068916563428894560}
 --- !u!1 &7135649268393283101
 GameObject:
   m_ObjectHideFlags: 0
