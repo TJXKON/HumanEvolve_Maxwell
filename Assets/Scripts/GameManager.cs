@@ -11,9 +11,6 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name=="Debug Room"){
             FindObjectOfType<DebugManager>().enabled = true;
         }
-        else{
-            FindObjectOfType<DebugManager>().enabled = false;
-        }
     }
 
 
