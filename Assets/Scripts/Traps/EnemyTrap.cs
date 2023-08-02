@@ -9,7 +9,7 @@ public class EnemyTrap : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-            Debug.Log("Collision with spike detected.");
+            
         if (collision.gameObject.CompareTag("Player"))
         {
            
