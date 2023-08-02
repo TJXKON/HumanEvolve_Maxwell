@@ -5,6 +5,11 @@ using UnityEngine.UI;
 public class DebugManager : MonoBehaviour
 {
     [SerializeField] public Text hpText;
+
+
+    void Awake(){
+        Debug.Log("**Developer mode** \nSwap Style: \n1 - Normal \n2 - Fire \n3 - Laser \n4 - Gun \n5 - Magic");
+    }
     // Update is called once per frame
     void Update()
     {
