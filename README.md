@@ -17,3 +17,6 @@ This is a UTAR Software Engineering student group assignment project for Program
 5. Pleaee update to group before merging the pull request.
 
 Reminder: Please do not make any changes directly in main branch to avoid any script conflicts.
+
+#Asset Resources Used
+Character - https://assetstore.unity.com/packages/2d/characters/simple-2d-platformer-assets-pack-188518#content
