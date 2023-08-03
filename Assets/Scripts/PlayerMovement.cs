@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsHeadHitted(){
 
-        if (Physics.Raycast(headCheck.position, Vector3.up, out RaycastHit hit, 1.2f, groundLayer))
+        if (Physics.Raycast(headCheck.position, Vector3.up, out RaycastHit hit, 1.0f, groundLayer))
         {
 
             return true;
