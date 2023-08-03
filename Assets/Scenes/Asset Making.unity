@@ -439,6 +439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes
       objectReference: {fileID: 0}
+    - target: {fileID: 7622576535262273284, guid: 8300559858225144eaaf77e7e5d0e20e, type: 3}
+      propertyPath: m_TagString
+      value: Trap
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -730,6 +734,10 @@ PrefabInstance:
     - target: {fileID: 2472731612920003305, guid: d5a81aca9afff4c48896ef84a32d9e86, type: 3}
       propertyPath: m_Name
       value: FireTrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 2472731612920003305, guid: d5a81aca9afff4c48896ef84a32d9e86, type: 3}
+      propertyPath: m_TagString
+      value: Trap
       objectReference: {fileID: 0}
     - target: {fileID: 6281824815285746198, guid: d5a81aca9afff4c48896ef84a32d9e86, type: 3}
       propertyPath: m_RootOrder

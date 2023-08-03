@@ -66,7 +66,7 @@ public class FireTrap : MonoBehaviour
              Debug.Log("Player hit by fire.");
             if (playerStatus != null)
             {
-                playerStatus.health -= damageAmount;
+                playerStatus.currentHP -= damageAmount;
             }
         }
     }
