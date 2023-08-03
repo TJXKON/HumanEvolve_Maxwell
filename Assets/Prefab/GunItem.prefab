@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6127128136823672230}
   - component: {fileID: 8652607232351685020}
   m_Layer: 0
-  m_Name: LaserItem
+  m_Name: GunItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: Laser
+  itemName: Gun
 --- !u!1001 &1495062252461272912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223526616464650, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: m_Name
-      value: Magic fire pro blue
+      value: Magic fire pro dark blue
       objectReference: {fileID: 0}
     - target: {fileID: 4731861580502952, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: m_RootOrder
@@ -127,15 +127,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198696392922457284, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.97102207
+      value: 0.31132078
       objectReference: {fileID: 0}
     - target: {fileID: 198696392922457284, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 1
+      value: 0.11840471
       objectReference: {fileID: 0}
     - target: {fileID: 198696392922457284, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.19245279
+      value: 0.045229614
       objectReference: {fileID: 0}
     - target: {fileID: 199011672764196750, guid: c590b17884b119046bc6412066500b7d, type: 3}
       propertyPath: m_Materials.Array.size
