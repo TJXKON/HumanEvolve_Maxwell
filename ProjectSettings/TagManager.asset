@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Platform
-  - Trap
   - Non-Trigger
   - Ground
+  - Platform
+  - Trap
   layers:
   - Default
   - TransparentFX
