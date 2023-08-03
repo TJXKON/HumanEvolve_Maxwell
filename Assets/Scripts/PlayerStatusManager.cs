@@ -5,14 +5,25 @@ using UnityEngine;
 public class PlayerStatusManager : MonoBehaviour
 {
 
-    public int health = 100;
+    public int maxHP = 100;
+    [HideInInspector] public int currentHP;
+    public bool Iframe = false;
 
     public string style = "Normal";
 
+    void Start(){
+        currentHP = maxHP;
+    }
     void Update() {
-        if (health<=0){
+        if (currentHP<=0){
             FindObjectOfType<GameManager>().gameOver();
         }
     }
+
+    public void takeDamage(int dmg){
+        currentHP-=dmg;
+
+    }
+
 
 }
