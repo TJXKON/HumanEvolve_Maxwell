@@ -15,7 +15,7 @@ public class DebugManager : MonoBehaviour
     {
 
         if (GameObject.Find("Player")!=null){
-            hpText.text="HP: "+FindObjectOfType<PlayerStatusManager>().health.ToString();
+            hpText.text="HP: "+FindObjectOfType<PlayerStatusManager>().currentHP.ToString();
         }
 
 
