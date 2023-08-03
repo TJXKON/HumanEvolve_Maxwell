@@ -230,8 +230,8 @@ MonoBehaviour:
   firepoint: {fileID: 3167356342179350212}
   animator: {fileID: 5049252063983792066}
   attackRate: 1
-  charge: 0.5
-  globalcooldown: 0.25
+  charge: 1
+  globalcooldown: 0.5
   isAttacking: 0
 --- !u!114 &6236097108222276454
 MonoBehaviour:
@@ -245,9 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b18f82b3d928a744b4d179446bf0dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
-  currentHP: 0
-  Iframe: 0
+  health: 100
   style: Normal
 --- !u!114 &9083580812337008148
 MonoBehaviour:
@@ -273,17 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d752c98b73a7a44db509e38645f2a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 3167356342179350212}
-  enemyLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  punchEffect: {fileID: 2767729299977415279, guid: c724e2b4d0cf2e945b5d6f4fe357216d, type: 3}
-  fireEffect: {fileID: 3327284279331517867, guid: c7bcfe9738433064aa188d920fb19972, type: 3}
+  punchEffect: {fileID: 0}
+  fireEffect: {fileID: 0}
   laser: {fileID: 0}
   gunBullet: {fileID: 0}
   MagicEffect: {fileID: 0}
-  fireSpecialEffect: {fileID: 3327284279331517867, guid: 33233ad36e7eeac4aae3fca58bd65c23, type: 3}
-  NormalDmg: 5
+  firePoint: {fileID: 3167356342179350212}
 --- !u!1 &5155768799771171166
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,8 +469,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8345415493180153351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: -2.1, z: 0}
-  m_LocalScale: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.525, y: -2.204, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8679551536113579755}

@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 1391520823878361964}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 647083675275123783, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.5207658
       objectReference: {fileID: 0}
     - target: {fileID: 647083675275123783, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_LocalRotation.w
@@ -148,10 +148,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1347125498789785438, guid: 799e78482282b98468eba1692da75489, type: 3}
-      propertyPath: dropItem
-      value: 
-      objectReference: {fileID: 4144922047240548959, guid: d06735222ca9f9d44ba95524b42f2a84, type: 3}
     - target: {fileID: 2370130132936475564, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Name
       value: SampleEnemy
@@ -164,16 +160,7 @@ PrefabInstance:
       propertyPath: patrolDestination.Array.data[1]
       value: 
       objectReference: {fileID: 7138114554444941467}
-    - target: {fileID: 6308872725280228118, guid: 799e78482282b98468eba1692da75489, type: 3}
-      propertyPath: m_Size.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6308872725280228118, guid: 799e78482282b98468eba1692da75489, type: 3}
-      propertyPath: m_IncludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4111409678382324292, guid: 799e78482282b98468eba1692da75489, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
