@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FireTrap : MonoBehaviour
 {
-     public float activeDuration = 1f; // The duration the trap is active in seconds
-    public float inactiveDuration = 2f; // The duration the trap is inactive in seconds
-    public int damageAmount = 20; // Amount of damage dealt to the player when active
+     public float activeDuration = 1f; 
+    public float inactiveDuration = 2f; 
+    public int damageAmount = 20; 
 
     private Animator animator;
     private BoxCollider boxCollider;
@@ -22,24 +22,19 @@ public class FireTrap : MonoBehaviour
 
     void Update()
     {
-        // Timer for switching between active and inactive states
         timer += Time.deltaTime;
 
         if (isActive)
         {
-            // Check if the active duration is over
             if (timer >= activeDuration)
-            {
-                // Deactivate the trap
+            { 
                 DeactivateTrap();
             }
         }
         else
-        {
-            // Check if the inactive duration is over
+        { 
             if (timer >= inactiveDuration)
             {
-                // Activate the trap
                 ActivateTrap();
             }
         }
