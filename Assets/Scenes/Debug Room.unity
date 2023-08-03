@@ -876,6 +876,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireItem
       objectReference: {fileID: 0}
+    - target: {fileID: 6127128136823672230, guid: d06735222ca9f9d44ba95524b42f2a84, type: 3}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
