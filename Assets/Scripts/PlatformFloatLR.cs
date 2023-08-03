@@ -54,7 +54,7 @@ public class PlatormFloatLR : MonoBehaviour
             isPlayerOnPlatform = false;
           
             playerTransform.SetParent(null);
-            playerTransform = null;
+        
         }
     }
 }
