@@ -802,7 +802,7 @@ PrefabInstance:
     - target: {fileID: 4450171722555360306, guid: f904f746e8d0d6043a2c54c99653991e, type: 3}
       propertyPath: dropItem
       value: 
-      objectReference: {fileID: 4144922047240548959, guid: d06735222ca9f9d44ba95524b42f2a84, type: 3}
+      objectReference: {fileID: 4144922047240548959, guid: 606a5bedd21c630418da174c3aecb5e2, type: 3}
     - target: {fileID: 7770271788503441284, guid: f904f746e8d0d6043a2c54c99653991e, type: 3}
       propertyPath: m_Name
       value: Enemy1
@@ -898,6 +898,10 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2245239999083716531, guid: d576344e25e390345b92c27b663036f5, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 661449637634449609, guid: 991d44a9ac2235c4cb4c5f82ff1f46d9, type: 3}
+    - target: {fileID: 2245239999083716531, guid: d576344e25e390345b92c27b663036f5, type: 3}
       propertyPath: NormalDmg
       value: 5
       objectReference: {fileID: 0}
@@ -947,7 +951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8679551536113579755, guid: d576344e25e390345b92c27b663036f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.18
+      value: 6.21
       objectReference: {fileID: 0}
     - target: {fileID: 8679551536113579755, guid: d576344e25e390345b92c27b663036f5, type: 3}
       propertyPath: m_LocalPosition.z

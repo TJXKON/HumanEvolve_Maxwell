@@ -12,6 +12,7 @@ public class DropItem : MonoBehaviour
     public ItemTypes itemType;
     [SerializeField] public string itemName;
     private bool pickable = false;
+    private static GameObject thisItem;
 
 
 
@@ -35,14 +36,28 @@ public class DropItem : MonoBehaviour
         }
     }
 
+        void OnTriggerExit(Collider collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            pickable = false;
+        }
+    }
+
 
     void pickUp(){
         if (itemType == ItemTypes.style){
             FindObjectOfType<PlayerStatusManager>().style=itemName;
             Debug.Log("Player style changed to "+itemName);
         }
+        thisItem = gameObject;
+        Destroy(thisItem);
+    }
 
-        Destroy(this.gameObject);
+    void OnDestroy(){
+        if (thisItem == gameObject){
+            thisItem = null;
+        }
     }
 
 }

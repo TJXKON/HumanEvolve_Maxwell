@@ -10,8 +10,8 @@ public class PlayerStyles : MonoBehaviour
     [SerializeField] public GameObject punchEffect;
     [SerializeField] public GameObject fireEffect;
     [SerializeField] public GameObject laser;
-    [SerializeField] public GameObject gunBullet;
-    [SerializeField] public GameObject MagicEffect;
+    //[SerializeField] public GameObject gunBullet;
+    //[SerializeField] public GameObject MagicEffect;
 
     [SerializeField] public GameObject fireSpecialEffect;
 
@@ -47,6 +47,25 @@ public class PlayerStyles : MonoBehaviour
 
     public void Laser(){
         Debug.Log("Cast Laser style attack");
+        GameObject go = Instantiate(laser,firePoint.position,Quaternion.identity);
+        LineRenderer line = go.transform.GetChild(0).gameObject.GetComponent<LineRenderer>();
+        RaycastHit hit;
+        if (Physics.Raycast(firePoint.position, firePoint.right, out hit, 10f, enemyLayerMask)){
+            if (hit.collider.CompareTag("Enemy")){
+                GameObject enemy = hit.collider.gameObject;
+                enemy.GetComponent<Enemy>().takeDamage(10);
+                line.SetPosition(0,firePoint.position);
+                line.SetPosition(1,hit.point);
+
+            }
+        }
+        else{
+            line.SetPosition(0,firePoint.position);
+            line.SetPosition(1,firePoint.position+firePoint.right*10);
+
+        }
+
+        Destroy(go,0.25f);
     }
 
     public void Gun(){
@@ -86,8 +105,7 @@ public class PlayerStyles : MonoBehaviour
         Debug.Log("Cast Fire style special attack");
         RaycastHit hit;
         if (Physics.Raycast(firePoint.position, firePoint.right, out hit, 10f, enemyLayerMask)){
-            if (hit.collider.CompareTag("Enemy")){
-                Debug.Log("fire!");
+            if (hit.collider.CompareTag("Enemy")&&hit.collider!=null){
                 Transform target = hit.collider.transform;
                 GameObject go = Instantiate(fireSpecialEffect, target.position + target.up * 1f, Quaternion.identity);
                 Destroy(go,0.25f);
@@ -102,6 +120,23 @@ public class PlayerStyles : MonoBehaviour
 
     public void LaserSpecial(){
         Debug.Log("Cast Laser style special attack");
+
+        GameObject go = Instantiate(laser,firePoint.position,Quaternion.identity);
+        LineRenderer line = go.transform.GetChild(0).gameObject.GetComponent<LineRenderer>();
+
+        RaycastHit[] hits = Physics.RaycastAll(firePoint.position, transform.right, 15f,enemyLayerMask);
+        foreach (RaycastHit hit in hits){
+            if (hit.collider.CompareTag("Enemy")){
+                GameObject enemy = hit.collider.gameObject;
+                enemy.GetComponent<Enemy>().takeDamage(10);
+            }
+        }
+        line.startWidth=0.3f;
+        line.endWidth=1f;
+        line.SetPosition(0,firePoint.position);
+        line.SetPosition(1,firePoint.position+firePoint.right*15);
+        Destroy(go,0.25f);
+
     }
 
     public void GunSpecial(){
