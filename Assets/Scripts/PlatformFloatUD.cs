@@ -54,7 +54,7 @@ private void OnCollisionExit(Collision collision)
         isPlayerOnPlatform = false;
         
         playerTransform.SetParent(null);
-        playerTransform = null;
+        
     }
 }
 }

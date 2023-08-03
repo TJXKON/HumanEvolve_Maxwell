@@ -6,7 +6,7 @@ public class FireTrap : MonoBehaviour
 {
      public float activeDuration = 1f; 
     public float inactiveDuration = 2f; 
-    public int damageAmount = 20; 
+    public int damageAmount = 10; 
 
     private Animator animator;
     private BoxCollider boxCollider;
