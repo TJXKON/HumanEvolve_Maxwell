@@ -18,7 +18,7 @@ public class EnemyTrap : MonoBehaviour
              Debug.Log("Player collided with spike.");
             if (playerStatus != null)
             {
-                playerStatus.health -= damageAmount;
+                playerStatus.currentHP -= damageAmount;
             }
         }
     }
