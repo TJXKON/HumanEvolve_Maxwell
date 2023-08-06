@@ -144,21 +144,12 @@ public class PlayerStyles : MonoBehaviour
     public void GunSpecial(){
         Debug.Log("Cast Gun style special attack");
         float angle = 0f;
-        for (int i=0;i<3;i++){
+        for (int i=0;i<4;i++){
             Instantiate(gunBullet,firePoint.position,firePoint.rotation* Quaternion.Euler (0f, 0f, angle));
             angle+=15f;
         }
-        StartCoroutine(secondShot());
     }
 
-    IEnumerator secondShot(){
-        yield return new WaitForSeconds(0.1f);
-        float angle = 0f;
-        for (int i=0;i<5;i++){
-            Instantiate(gunBullet,firePoint.position,firePoint.rotation* Quaternion.Euler (0f, 0f, angle));
-            angle+=15;
-        }
-    }
     
     public void MagicSpecial(){
         Debug.Log("Cast Magic style special attack");

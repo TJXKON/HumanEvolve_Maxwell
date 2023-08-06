@@ -33,6 +33,8 @@ public class Gun : MonoBehaviour
             DestroyProjectile();
 
     }
+
+
     IEnumerator wait(){
         yield return new WaitForSeconds(0.5f);
         DestroyProjectile();
