@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public int hitDamage = 10;
     public GameObject dropItem;
     private bool playerIframe = false;
+    private static GameObject thisEnemy;
 
     void Awake()
     {
@@ -40,7 +41,8 @@ public class Enemy : MonoBehaviour
     }
 
     void defeat(){
-       Destroy(gameObject);
+        thisEnemy = gameObject;
+        Destroy(thisEnemy);
        if (dropItem!=null){
         Instantiate(dropItem, transform.position, Quaternion.identity);
        }
@@ -52,7 +54,11 @@ public class Enemy : MonoBehaviour
         playerIframe = false;
     }
 
-    
+    void OnDestroy(){
+        if (thisEnemy == gameObject){
+            thisEnemy = null;
+        }
+    }
 
 
 

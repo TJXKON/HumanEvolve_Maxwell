@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Non-Trigger
   - Ground
+  - Platform
+  - Trap
+  - HealCherry
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - UI
   - Ground
   - Enemy
-  - 
+  - HealCherry
   - 
   - 
   - 
