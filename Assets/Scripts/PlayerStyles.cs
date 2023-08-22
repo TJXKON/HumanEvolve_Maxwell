@@ -10,7 +10,7 @@ public class PlayerStyles : MonoBehaviour
     [SerializeField] public GameObject punchEffect;
     [SerializeField] public GameObject fireEffect;
     [SerializeField] public GameObject laser;
-    //[SerializeField] public GameObject gunBullet;
+    [SerializeField] public GameObject gunBullet;
     //[SerializeField] public GameObject MagicEffect;
 
     [SerializeField] public GameObject fireSpecialEffect;
@@ -70,6 +70,8 @@ public class PlayerStyles : MonoBehaviour
 
     public void Gun(){
         Debug.Log("Cast Gun style attack");
+        Instantiate(gunBullet,firePoint.position,firePoint.rotation);
+        
     }
     
     public void Magic(){
@@ -113,7 +115,7 @@ public class PlayerStyles : MonoBehaviour
         }
         else{
             //If no enemy found, cast directly in front
-            GameObject go = Instantiate(fireSpecialEffect, firePoint.position + firePoint.right * 2.5f + firePoint.up * 1f, Quaternion.identity);
+            GameObject go = Instantiate(fireSpecialEffect, firePoint.position + firePoint.right * 2.5f + firePoint.up * 1f, firePoint.rotation);
             Destroy(go,0.25f);
         }
     }
@@ -141,9 +143,17 @@ public class PlayerStyles : MonoBehaviour
 
     public void GunSpecial(){
         Debug.Log("Cast Gun style special attack");
+        float angle = 0f;
+        for (int i=0;i<4;i++){
+            Instantiate(gunBullet,firePoint.position,firePoint.rotation* Quaternion.Euler (0f, 0f, angle));
+            angle+=15f;
+        }
     }
+
     
     public void MagicSpecial(){
         Debug.Log("Cast Magic style special attack");
     }
+
+
 }
