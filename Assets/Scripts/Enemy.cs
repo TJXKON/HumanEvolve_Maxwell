@@ -20,14 +20,18 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (currentHP<=0){
             defeat();
         }
+
+        playerIframe = GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe;
     }
 
     //Hit Damage
     private void OnTriggerEnter(Collider collider)
     {
+        
         if (collider.tag=="Player" && !playerIframe){
             playerIframe = true;
             Debug.Log("Player hurted by enemy collision!");
@@ -52,6 +56,7 @@ public class Enemy : MonoBehaviour
     IEnumerator Cooldown(float time){
         yield return new WaitForSeconds(time);
         playerIframe = false;
+        GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe = playerIframe;
     }
 
     void OnDestroy(){
