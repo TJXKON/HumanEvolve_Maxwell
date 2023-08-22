@@ -6,9 +6,11 @@ public class FireTrap : MonoBehaviour
 {
      public float activeDuration = 1f; 
     public float inactiveDuration = 2f; 
+
     public int damageAmount = 10; 
 
     private Animator anim;
+
     private BoxCollider boxCollider;
 
     private bool isActive = false;
@@ -16,7 +18,9 @@ public class FireTrap : MonoBehaviour
 
     void Start()
     {
+
         anim = GetComponent<Animator>();
+
         boxCollider = GetComponent<BoxCollider>();
     }
 
@@ -44,7 +48,9 @@ public class FireTrap : MonoBehaviour
     {
         isActive = true;
         timer = 0f;
+
         anim.SetBool("activated",true);
+
         boxCollider.enabled = true;
     }
 
@@ -52,7 +58,9 @@ public class FireTrap : MonoBehaviour
     {
         isActive = false;
         timer = 0f;
+
         anim.SetBool("activated",false);
+
         boxCollider.enabled = false;
     }
 
@@ -66,7 +74,9 @@ public class FireTrap : MonoBehaviour
              Debug.Log("Player hit by fire.");
             if (playerStatus != null)
             {
+
                 playerStatus.currentHP -= damageAmount;
+
             }
         }
     }
