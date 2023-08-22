@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public int hitDamage = 5;
     private Transform player;
     private Vector2 target;
+    private bool playerIframe = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +25,15 @@ public class Projectile : MonoBehaviour
         {
             DestroyProjectile();
         }
+         playerIframe = GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe;
     }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player")&&!playerIframe)
         {
             FindObjectOfType<PlayerStatusManager>().takeDamage(hitDamage);
+            GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe=false;
             DestroyProjectile();
         }
         else if (collider.CompareTag("Ground"))

@@ -11,7 +11,7 @@ public class PlayerStyles : MonoBehaviour
     [SerializeField] public GameObject fireEffect;
     [SerializeField] public GameObject laser;
     [SerializeField] public GameObject gunBullet;
-    //[SerializeField] public GameObject MagicEffect;
+    [SerializeField] public GameObject MagicEffect;
 
     [SerializeField] public GameObject fireSpecialEffect;
 
@@ -76,6 +76,8 @@ public class PlayerStyles : MonoBehaviour
     
     public void Magic(){
         Debug.Log("Cast Magic style attack");
+        GameObject go = Instantiate(MagicEffect, this.gameObject.transform.position, Quaternion.identity);
+        Destroy(go,0.25f);
     }
 
 
@@ -88,14 +90,7 @@ public class PlayerStyles : MonoBehaviour
 
         Collider[] hitEnemies = Physics.OverlapSphere(firePoint.position + firePoint.right * 0.5f, 1.7f);
 
-        foreach (Collider enemy in hitEnemies)
-        {
-            if (enemy.CompareTag("Enemy")){
-                Debug.Log(enemy.gameObject.name+"Enemy hitted!");
-                enemy.gameObject.GetComponent<Enemy>().takeDamage(10);
-            }
 
-        }
 
         Destroy(go,0.25f);
 
@@ -116,7 +111,7 @@ public class PlayerStyles : MonoBehaviour
         else{
             //If no enemy found, cast directly in front
             GameObject go = Instantiate(fireSpecialEffect, firePoint.position + firePoint.right * 2.5f + firePoint.up * 1f, firePoint.rotation);
-            Destroy(go,0.25f);
+            Destroy(go,0.4f);
         }
     }
 
@@ -144,24 +139,29 @@ public class PlayerStyles : MonoBehaviour
     public void GunSpecial(){
         Debug.Log("Cast Gun style special attack");
         float angle = 0f;
-        for (int i=0;i<3;i++){
+        for (int i=0;i<4;i++){
             Instantiate(gunBullet,firePoint.position,firePoint.rotation* Quaternion.Euler (0f, 0f, angle));
             angle+=15f;
         }
-        StartCoroutine(secondShot());
     }
 
-    IEnumerator secondShot(){
-        yield return new WaitForSeconds(0.1f);
-        float angle = 0f;
-        for (int i=0;i<5;i++){
-            Instantiate(gunBullet,firePoint.position,firePoint.rotation* Quaternion.Euler (0f, 0f, angle));
-            angle+=15;
-        }
-    }
     
     public void MagicSpecial(){
         Debug.Log("Cast Magic style special attack");
+        //GameObject go = Instantiate(MagicEffect, this.gameObject.transform.position, Quaternion.identity);
+
+        Collider[] hitEnemies = Physics.OverlapSphere(this.gameObject.transform.position,10f);
+        foreach (Collider enemy in hitEnemies)
+            {
+                if (enemy.CompareTag("Enemy")){
+                    Transform target = enemy.gameObject.transform;
+                    GameObject go2 = Instantiate(MagicEffect, target.position + target.up * 1f, Quaternion.identity);
+                    Destroy(go2,0.25f);
+                }
+
+            }
+
+        //Destroy(go,0.25f);
     }
 
 
