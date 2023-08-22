@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour
         pastPosition = transform.position.x;
 
         //Set a fixed distance for enemy sense player
-        if (Vector2.Distance(transform.position, player.position) < 12f)
+        if (player != null && Vector2.Distance(transform.position, player.position) < 12f)
         {
             //Chase player
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)

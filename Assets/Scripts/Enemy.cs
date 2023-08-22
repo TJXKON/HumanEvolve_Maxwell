@@ -5,40 +5,62 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    public int health = 20;
+    public int maxHP = 20;
+    int currentHP;
+
     public int hitDamage = 10;
     public GameObject dropItem;
-    private bool Iframe = false;
+    private bool playerIframe = false;
+    private static GameObject thisEnemy;
 
+    void Awake()
+    {
+        currentHP = maxHP;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (health<=0){
+        if (currentHP<=0){
             defeat();
         }
     }
 
+    //Hit Damage
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag=="Player" && !Iframe){
-            Iframe = true;
-            StartCoroutine(cooldown(1f));
-            Debug.Log("Player hitted with enemy!");
-            FindObjectOfType<PlayerStatusManager>().health-=hitDamage;
+        if (collider.tag=="Player" && !playerIframe){
+            playerIframe = true;
+            Debug.Log("Player hurted by enemy collision!");
+            FindObjectOfType<PlayerStatusManager>().takeDamage(hitDamage);
+            StartCoroutine(Cooldown(1f));
         }
     }
 
+    public void takeDamage(int dmg){
+        currentHP-=dmg;
+    }
+
     void defeat(){
-       Destroy(gameObject);
+        thisEnemy = gameObject;
+        Destroy(thisEnemy);
        if (dropItem!=null){
         Instantiate(dropItem, transform.position, Quaternion.identity);
        }
 
     }
 
-    IEnumerator cooldown(float time){
-
+    IEnumerator Cooldown(float time){
         yield return new WaitForSeconds(time);
-        Iframe = false;
+        playerIframe = false;
     }
+
+    void OnDestroy(){
+        if (thisEnemy == gameObject){
+            thisEnemy = null;
+        }
+    }
+
+
+
+     
 }

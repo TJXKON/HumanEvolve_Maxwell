@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DebugManager : MonoBehaviour
 {
     [SerializeField] public Text hpText;
+    [SerializeField] public Text cdText;
 
 
     void Awake(){
@@ -15,7 +16,11 @@ public class DebugManager : MonoBehaviour
     {
 
         if (GameObject.Find("Player")!=null){
-            hpText.text="HP: "+FindObjectOfType<PlayerStatusManager>().health.ToString();
+            hpText.text="HP: "+FindObjectOfType<PlayerStatusManager>().currentHP.ToString();
+        }
+
+        if (GameObject.Find("Player")!=null){
+            cdText.text="CD: "+FindObjectOfType<PlayerAttack>().normalCD.ToString()+"\n"+FindObjectOfType<PlayerAttack>().specialCD.ToString();
         }
 
 

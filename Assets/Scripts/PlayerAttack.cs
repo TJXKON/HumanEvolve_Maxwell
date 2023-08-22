@@ -9,10 +9,15 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] public Animator animator;
     [SerializeField] public float attackRate = 1f;
     [SerializeField] public float charge = 1f;
-    [SerializeField] public float globalcooldown = 0.5f;
+    [SerializeField] public float GlobalcastTime = 0.5f;
+    [SerializeField] public float normalMaxCooldown = 0.5f;
+    [SerializeField] public float specialMaxCooldown = 1f;
+    
 
     public bool isAttacking = false;
-    private float cooldown = 0f;
+    public  float timer = 0f;
+    [HideInInspector] public float normalCD = 0f;
+    [HideInInspector] public float specialCD = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,27 +29,34 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         if (!isAttacking && !(GetComponent<PlayerMovement>().IsCrouching)){
-            if (Input.GetButtonDown("Fire1")){
+            if (Input.GetButtonDown("Fire1")&& normalCD<=0f){
 
                 isAttacking = true;
-                cooldown = globalcooldown;    //Set cooldown
+                timer = GlobalcastTime;    //Set cooldown
                 Attack();
             }
-            else if (Input.GetButtonDown("Fire2")){
+            else if (Input.GetButtonDown("Fire2") && specialCD<=0f){
                 isAttacking = true;
-                cooldown = globalcooldown+charge;
+                timer = GlobalcastTime+charge;
                 StartCoroutine(SpecialAttack());
             }
         }
-        else{
+        else if (timer>=0f){
             //Reduce cooldown
-            cooldown -= Time.deltaTime*attackRate;
+            timer -= Time.deltaTime*attackRate;
 
             //Reset attack condition
-            if (cooldown<=0f){
+            if (timer<=0f){
                 isAttacking = false;
                 animator.speed = 1;
             }
+        }
+        
+        if (normalCD>=0f){
+            normalCD -= Time.deltaTime * 1f;
+        }
+        if (specialCD>=0f){
+            specialCD -= Time.deltaTime * 1f;
         }
 
     }
@@ -53,6 +65,7 @@ public class PlayerAttack : MonoBehaviour
 
         //animator.SetTrigger("attack");
         animator.speed = attackRate;    //Animation speed based on attack rate
+        normalCD = normalMaxCooldown;
         //Perform attack
         switch (FindObjectOfType<PlayerStatusManager>().style)
         {
@@ -82,6 +95,7 @@ public class PlayerAttack : MonoBehaviour
         //animator.SetTrigger("specialAttack");
         animator.speed = attackRate;    //Animation speed based on attack rate
         Debug.Log("SpecialAttack");
+        specialCD = specialMaxCooldown;
 
         switch (FindObjectOfType<PlayerStatusManager>().style)
         {
