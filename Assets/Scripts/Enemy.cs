@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
             defeat();
         }
 
+        //Player take damage enable monitor
         playerIframe = GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe;
     }
 
@@ -36,7 +37,7 @@ public class Enemy : MonoBehaviour
             playerIframe = true;
             Debug.Log("Player hurted by enemy collision!");
             FindObjectOfType<PlayerStatusManager>().takeDamage(hitDamage);
-            StartCoroutine(Cooldown(1f));
+     
         }
     }
 
@@ -53,11 +54,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    IEnumerator Cooldown(float time){
-        yield return new WaitForSeconds(time);
-        playerIframe = false;
-        GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe = playerIframe;
-    }
 
     void OnDestroy(){
         if (thisEnemy == gameObject){
