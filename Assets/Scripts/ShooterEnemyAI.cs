@@ -6,9 +6,9 @@ public class ShooterEnemyAI : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;   // Movement speed of the enemy.
     [SerializeField] private float stoppingDistance;   // Distance at which the enemy stops moving towards the player.
-    [SerializeField] private float retreatDistance; // Backward when player apporoach
-    [SerializeField] private Animator anim;
+    [SerializeField] private float retreatDistance; // Backward when player apporoach 
     [SerializeField] private GameObject enemyAnimation;
+    private Animator anim;
 
     private Transform player;   // Reference to the player's Transform component.
 
@@ -84,7 +84,6 @@ public class ShooterEnemyAI : MonoBehaviour
             {
                 if (callOnce == false)
                 {
-                    anim.SetBool("walk", false);
                     callOnce = true;
                     StartCoroutine(Wait());
                 }
@@ -121,6 +120,7 @@ public class ShooterEnemyAI : MonoBehaviour
 
     IEnumerator Wait()
     {
+        anim.SetBool("walk", false);
         yield return new WaitForSeconds(waitTime);
 
         currentPointIndex++;
