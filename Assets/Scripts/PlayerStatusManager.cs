@@ -5,14 +5,17 @@ using UnityEngine;
 public class PlayerStatusManager : MonoBehaviour
 {
 
+
     public int maxHP = 100;
     [HideInInspector] public int currentHP;
     public bool Iframe = false;
+    public HpBar hpBar;
+    private float IDuration = 0.6f;
 
     [SerializeField] private GameObject sprite;
     [SerializeField] private Material flashMaterial;
 
-    private float flashtime = 0.15f;
+    private float flashtime = 0.12f;
     SpriteRenderer sr;
     Material defaultMaterial;
 
@@ -22,10 +25,22 @@ public class PlayerStatusManager : MonoBehaviour
         currentHP = maxHP;
         sr = sprite.GetComponent<SpriteRenderer>();
         defaultMaterial=sr.material;
+        hpBar.setMaxHp(maxHP);
     }
     void Update() {
         if (currentHP<=0){
             FindObjectOfType<GameManager>().gameOver();
+        }
+        hpBar.setHp(currentHP);
+
+        if(Iframe){
+            
+            if (IDuration>0f){
+                IDuration-=Time.deltaTime*1f;
+            }   else{
+                Iframe=false;
+                IDuration = 0.6f;
+            }
         }
     }
 
@@ -51,6 +66,8 @@ public class PlayerStatusManager : MonoBehaviour
             StartCoroutine(keepFlash());
         }
     }
+
+
 
 
 
