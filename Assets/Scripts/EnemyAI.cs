@@ -7,8 +7,8 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;   // Movement speed of the enemy.
     [SerializeField] private float stoppingDistance;   // Distance at which the enemy stops moving towards the player.
-    [SerializeField] private GameObject enemyAnimation;
-    private Animator anim;
+    //[SerializeField] private GameObject enemyAnimation;
+    //private Animator anim;
 
     private Transform player;   // Reference to the player's Transform component.
     private float pastPosition;
@@ -27,7 +27,7 @@ public class EnemyAI : MonoBehaviour
         sprite = transform.Find("EnemySprite").gameObject.transform;
         localScale = sprite.localScale;
         player = GameObject.FindGameObjectWithTag("Player").transform;   // Assuming the player tag is set to "Player".
-        anim = enemyAnimation.GetComponent<Animator>();
+        //anim = enemyAnimation.GetComponent<Animator>();
     }
     
 
@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
             //Chase player
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
             {
-                anim.SetBool("walk", true);
+                //anim.SetBool("walk", true);
                 transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
             }
         }
@@ -51,7 +51,7 @@ public class EnemyAI : MonoBehaviour
             //Start patrol if enemy are not sense player
             if(transform.position != patrolDestination[currentPointIndex].position) 
             {
-                anim.SetBool("walk", true);
+                //anim.SetBool("walk", true);
                 transform.position = Vector2.MoveTowards(transform.position, patrolDestination[currentPointIndex].position, moveSpeed * Time.deltaTime);
             }
             else
@@ -84,10 +84,10 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator Wait()
     {
-        anim.SetBool("walk", false);
+        //anim.SetBool("walk", false);
         yield return new WaitForSeconds(waitTime);
 
-        anim.SetBool("walk", true);
+        //anim.SetBool("walk", true);
         currentPointIndex++;
         if (currentPointIndex >= patrolDestination.Length)
         {

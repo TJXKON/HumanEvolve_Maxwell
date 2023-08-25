@@ -8,10 +8,10 @@ public class FiremanAI : MonoBehaviour
     [SerializeField] private float stoppingDistance;   // Distance at which the enemy stops moving towards the player.
     [SerializeField] private float retreatDistance; // Backward when player apporoach
     [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject enemyAnimation;
+    //[SerializeField] private GameObject enemyAnimation;
     [SerializeField] public GameObject fireEffect;
     [SerializeField] private GameObject flipFirePoint;
-    private Animator anim;
+    //private Animator anim;
 
     private Transform player;   // Reference to the player's Transform component.
     private float pastPosition;
@@ -31,7 +31,7 @@ public class FiremanAI : MonoBehaviour
         sprite = transform.Find("EnemySprite").gameObject.transform;
         localScale = sprite.localScale;
         player = GameObject.FindGameObjectWithTag("Player").transform;   // Assuming the player tag is set to "Player".
-        anim = enemyAnimation.GetComponent<Animator>();
+        //anim = enemyAnimation.GetComponent<Animator>();
         timeBetweenShot = startTimeBetweenShot;
     }
 
@@ -46,18 +46,18 @@ public class FiremanAI : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
             {
-                anim.SetBool("walk", true);
+               //anim.SetBool("walk", true);
                 //Apporach player
                 transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
             }
             else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
             {
-                anim.SetBool("walk", false);
+                //anim.SetBool("walk", false);
                 transform.position = this.transform.position;
             }
             else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
             {
-                anim.SetBool("walk", true);
+                //anim.SetBool("walk", true);
                 //Away from distance if distance between them is too short
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -moveSpeed * Time.deltaTime);
             }
@@ -80,7 +80,7 @@ public class FiremanAI : MonoBehaviour
             //Start patrol if enemy are not sense player
             if (transform.position != patrolDestination[currentPointIndex].position)
             {
-                anim.SetBool("walk", true);
+                //anim.SetBool("walk", true);
                 transform.position = Vector2.MoveTowards(transform.position, patrolDestination[currentPointIndex].position, moveSpeed * Time.deltaTime);
             }
             else
@@ -136,7 +136,7 @@ public class FiremanAI : MonoBehaviour
 
     IEnumerator Wait()
     {
-        anim.SetBool("walk", false);
+        //anim.SetBool("walk", false);
         yield return new WaitForSeconds(waitTime);
 
         currentPointIndex++;
