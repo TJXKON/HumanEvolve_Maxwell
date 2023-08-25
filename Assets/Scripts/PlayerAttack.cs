@@ -85,12 +85,14 @@ public class PlayerAttack : MonoBehaviour
         {
             case "Normal":
                 FindObjectOfType<PlayerStyles>().Normal();
-                RaycastHit hit;
-    if (Physics.Raycast(firepoint.position, firepoint.forward, out hit))
+
+    Collider[] hits = Physics.OverlapSphere(firepoint.position + firepoint.right * 0.5f, 1.7f);
+
+    foreach (Collider hit in hits)
     {
-        if (hit.collider.CompareTag("WoodBox"))
+        if (hit.CompareTag("WoodBox"))
         {
-            WoodBox boxController = hit.collider.GetComponent<WoodBox>();
+            WoodBox boxController = hit.GetComponent<WoodBox>();
             if (boxController != null)
             {
                 boxController.OnPlayerAttack();
