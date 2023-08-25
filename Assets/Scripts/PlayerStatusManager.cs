@@ -9,7 +9,7 @@ public class PlayerStatusManager : MonoBehaviour
     public int maxHP = 100;
     [HideInInspector] public int currentHP;
     public bool Iframe = false;
-    public HpBar hpBar;
+    private HpBar hpBar;
     private float IDuration = 0.6f;
 
     [SerializeField] private GameObject sprite;
@@ -25,6 +25,8 @@ public class PlayerStatusManager : MonoBehaviour
         currentHP = maxHP;
         sr = sprite.GetComponent<SpriteRenderer>();
         defaultMaterial=sr.material;
+        //hpBar = GameObject.Find("Hp Bar").GetComponent<HpBar>();
+        hpBar = FindObjectOfType<HpBar>();
         hpBar.setMaxHp(maxHP);
     }
     void Update() {
