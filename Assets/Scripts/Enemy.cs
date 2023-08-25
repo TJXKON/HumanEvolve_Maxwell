@@ -20,19 +20,24 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (currentHP<=0){
             defeat();
         }
+
+        //Player take damage enable monitor
+        playerIframe = GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe;
     }
 
     //Hit Damage
     private void OnTriggerEnter(Collider collider)
     {
+        
         if (collider.tag=="Player" && !playerIframe){
             playerIframe = true;
             Debug.Log("Player hurted by enemy collision!");
             FindObjectOfType<PlayerStatusManager>().takeDamage(hitDamage);
-            StartCoroutine(Cooldown(1f));
+     
         }
     }
 
@@ -49,10 +54,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    IEnumerator Cooldown(float time){
-        yield return new WaitForSeconds(time);
-        playerIframe = false;
-    }
 
     void OnDestroy(){
         if (thisEnemy == gameObject){
