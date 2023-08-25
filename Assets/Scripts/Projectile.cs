@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
         if (collider.CompareTag("Player")&&!playerIframe)
         {
             FindObjectOfType<PlayerStatusManager>().takeDamage(hitDamage);
-            GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe=false;
+            //GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe=false;
             DestroyProjectile();
         }
         else if (collider.CompareTag("Ground"))
