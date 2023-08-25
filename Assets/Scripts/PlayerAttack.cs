@@ -85,6 +85,18 @@ public class PlayerAttack : MonoBehaviour
         {
             case "Normal":
                 FindObjectOfType<PlayerStyles>().Normal();
+                RaycastHit hit;
+    if (Physics.Raycast(firepoint.position, firepoint.forward, out hit))
+    {
+        if (hit.collider.CompareTag("WoodBox"))
+        {
+            WoodBox boxController = hit.collider.GetComponent<WoodBox>();
+            if (boxController != null)
+            {
+                boxController.OnPlayerAttack();
+            }
+        }
+    }
                 break;
             case "Fire":
                 FindObjectOfType<PlayerStyles>().Fire();
