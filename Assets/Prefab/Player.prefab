@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056716684497268665}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.07, z: 0}
+  m_LocalPosition: {x: 0, y: -1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282555204564996836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.1165, z: 0}
+  m_LocalPosition: {x: 0, y: -0.4965, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -127,7 +127,7 @@ Transform:
   - {fileID: 3167356342179350212}
   - {fileID: 8336006803782009929}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &29536602699868465
 MonoBehaviour:
@@ -228,11 +228,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firepoint: {fileID: 3167356342179350212}
+  chargeEffect: {fileID: 8512112209926012492, guid: e670ee22002dcdd4a8a155bb1abe4bfb, type: 3}
   animator: {fileID: 5049252063983792066}
   attackRate: 1
   charge: 0.5
-  globalcooldown: 0.25
+  GlobalcastTime: 0.5
+  normalMaxCooldown: 0.5
+  specialMaxCooldown: 1
   isAttacking: 0
+  timer: 0
+  normalCD: 0
+  specialCD: 0
+  specialIcon: {fileID: 0}
 --- !u!114 &6236097108222276454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +255,8 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 0
   Iframe: 0
+  sprite: {fileID: 5402987080566614875}
+  flashMaterial: {fileID: 2100000, guid: 90349c00ba26d7444bfd18ef41553bf4, type: 2}
   style: Normal
 --- !u!114 &9083580812337008148
 MonoBehaviour:
@@ -279,9 +288,9 @@ MonoBehaviour:
     m_Bits: 128
   punchEffect: {fileID: 2767729299977415279, guid: c724e2b4d0cf2e945b5d6f4fe357216d, type: 3}
   fireEffect: {fileID: 3327284279331517867, guid: c7bcfe9738433064aa188d920fb19972, type: 3}
-  laser: {fileID: 0}
-  gunBullet: {fileID: 0}
-  MagicEffect: {fileID: 0}
+  laser: {fileID: 661449637634449609, guid: 991d44a9ac2235c4cb4c5f82ff1f46d9, type: 3}
+  gunBullet: {fileID: 2366419286933068288, guid: 98401865ea8fa5141be892ba9313fc8b, type: 3}
+  MagicEffect: {fileID: 5085946394126448151, guid: 834a5d0c39db68443b9a79116b8ef5b3, type: 3}
   fireSpecialEffect: {fileID: 3327284279331517867, guid: 33233ad36e7eeac4aae3fca58bd65c23, type: 3}
   NormalDmg: 5
 --- !u!1 &5155768799771171166
@@ -308,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5155768799771171166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.45, z: 0}
+  m_LocalPosition: {x: 0, y: 0.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -340,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5402987080566614875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.62, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.3, y: 2.3, z: 2.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -424,7 +433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6469329411701210599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.8772, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7428, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -476,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8345415493180153351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: -2.1, z: 0}
+  m_LocalPosition: {x: 0.75, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
