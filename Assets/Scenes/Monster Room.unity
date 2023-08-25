@@ -143,7 +143,6 @@ MonoBehaviour:
   moveSpeed: 3
   stoppingDistance: 8
   retreatDistance: 5
-  enemyAnimation: {fileID: 1233330490}
   startTimeBetweenShot: 1.2
   projectile: {fileID: 1106024740886403048, guid: f628bfcb05b47b545b818dcaa38e9439, type: 3}
   waitTime: 1
@@ -1986,7 +1985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8679551536113579755, guid: d576344e25e390345b92c27b663036f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55
+      value: 0.56
       objectReference: {fileID: 0}
     - target: {fileID: 8679551536113579755, guid: d576344e25e390345b92c27b663036f5, type: 3}
       propertyPath: m_LocalPosition.z
