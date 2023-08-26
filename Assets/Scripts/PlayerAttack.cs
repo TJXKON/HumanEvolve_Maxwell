@@ -118,9 +118,8 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator SpecialAttack(){
         Debug.Log("Charge start");
         //GameObject go = Instantiate(chargeEffect, this.gameObject.transform.position+this.gameObject.transform.up * -2f, Quaternion.identity);
-        GameObject go = Instantiate(chargeEffect, this.gameObject.transform.position+this.gameObject.transform.up * -2f, Quaternion.identity) as GameObject; 
-        go.transform.parent = GameObject.Find("Player").transform;
-
+        GameObject go = Instantiate(chargeEffect, this.gameObject.transform.position+this.gameObject.transform.up * 0f, Quaternion.identity) as GameObject; 
+        go.GetComponent<FollowObject>().setTarget(this.gameObject);
         yield return new WaitForSeconds(charge);
         Debug.Log("Charge end");
          Destroy(go);

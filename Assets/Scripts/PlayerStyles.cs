@@ -90,7 +90,16 @@ public class PlayerStyles : MonoBehaviour
 
         Collider[] hitEnemies = Physics.OverlapSphere(firePoint.position + firePoint.right * 0.5f, 1.7f);
 
+        foreach (Collider enemy in hitEnemies)
+        {
+            if (enemy.CompareTag("Enemy")){
+                Debug.Log(enemy.gameObject.name+"Enemy hitted!");
+                enemy.gameObject.GetComponent<Enemy>().takeDamage(10);
+            }
 
+        }
+
+        Destroy(go,0.25f);
 
         Destroy(go,0.25f);
 
