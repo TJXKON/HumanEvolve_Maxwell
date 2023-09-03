@@ -4,8 +4,9 @@
 QualitySettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_CurrentQuality: 5
+  m_CurrentQuality: 3
   m_QualitySettings:
+<<<<<<< Updated upstream
   - serializedVersion: 2
     name: Very Low
     pixelLightCount: 0
@@ -42,6 +43,9 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
   - serializedVersion: 2
+=======
+  - serializedVersion: 3
+>>>>>>> Stashed changes
     name: Low
     pixelLightCount: 0
     shadows: 0
@@ -146,6 +150,7 @@ QualitySettings:
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
+<<<<<<< Updated upstream
   - serializedVersion: 2
     name: Very High
     pixelLightCount: 3
@@ -182,6 +187,9 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
   - serializedVersion: 2
+=======
+  - serializedVersion: 3
+>>>>>>> Stashed changes
     name: Ultra
     pixelLightCount: 4
     shadows: 2
@@ -217,6 +225,7 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
+<<<<<<< Updated upstream
     Android: 2
     Lumin: 5
     Nintendo 3DS: 5
@@ -230,3 +239,19 @@ QualitySettings:
     XboxOne: 5
     iPhone: 2
     tvOS: 2
+=======
+    Android: 1
+    Lumin: 3
+    Nintendo 3DS: 3
+    Nintendo Switch: 3
+    PS4: 3
+    PSP2: 1
+    Server: 0
+    Stadia: 3
+    Standalone: 3
+    WebGL: 2
+    Windows Store Apps: 3
+    XboxOne: 3
+    iPhone: 1
+    tvOS: 1
+>>>>>>> Stashed changes
