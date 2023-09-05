@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class DebugManager : MonoBehaviour
 {
-    [SerializeField] public Text hpText;
-    [SerializeField] public Text cdText;
 
 
     void Awake(){
@@ -14,14 +12,6 @@ public class DebugManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (GameObject.Find("Player")!=null){
-            hpText.text="HP: "+FindObjectOfType<PlayerStatusManager>().currentHP.ToString();
-        }
-
-        if (GameObject.Find("Player")!=null){
-            cdText.text="CD: "+FindObjectOfType<PlayerAttack>().normalCD.ToString()+"\n"+FindObjectOfType<PlayerAttack>().specialCD.ToString();
-        }
 
 
         if(Input.GetKeyDown(KeyCode.Alpha1)){
