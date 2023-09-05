@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4381339772291528169}
   - component: {fileID: 5540216270526314017}
   - component: {fileID: 2803431438341706290}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireSpecial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2256349370798985416}
   - component: {fileID: 6058633932521307057}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,9 +161,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4381339772291528169}
     m_Modifications:
+    - target: {fileID: 1000010336741610, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011298463270, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011796581256, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1000011797152326, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
       propertyPath: m_Name
       value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011797152326, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012348499044, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013371323466, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000014207458990, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108256732129644, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4000010212820824, guid: 6b9561becad1b2b44904be024e3a84a6, type: 3}
       propertyPath: m_RootOrder
