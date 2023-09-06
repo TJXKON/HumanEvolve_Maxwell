@@ -6,7 +6,7 @@ public class DebugManager : MonoBehaviour
 {
 
 
-    void Awake(){
+    void Start(){
         Debug.Log("**Developer mode** \nSwap Style: \n1 - Normal \n2 - Fire \n3 - Laser \n4 - Gun \n5 - Magic");
     }
     // Update is called once per frame

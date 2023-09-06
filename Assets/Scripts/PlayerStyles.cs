@@ -4,18 +4,36 @@ using UnityEngine;
 
 public class PlayerStyles : MonoBehaviour
 {
+    
+
+     private Scoring scoring;
     [SerializeField] public Transform firePoint;
     [SerializeField] private LayerMask enemyLayerMask;
 
+    [Header("Normal")]
     [SerializeField] public GameObject punchEffect;
-    [SerializeField] public GameObject fireEffect;
-    [SerializeField] public GameObject laser;
-    [SerializeField] public GameObject gunBullet;
-    [SerializeField] public GameObject MagicEffect;
+    [SerializeField] private int normalDmg = 5;
+    [SerializeField] private int normalSpecialDmg = 10;
 
+    [Header("Fire")]
+    [SerializeField] public GameObject fireEffect;
     [SerializeField] public GameObject fireSpecialEffect;
 
-    [SerializeField] public float NormalDmg;
+
+    [Header("Laser")]
+    [SerializeField] public GameObject laser;
+    [SerializeField] private int laserDmg = 10;
+
+    [Header("Gun")]
+    [SerializeField] public GameObject gunBullet;
+
+    [Header("Magic")]
+    [SerializeField] public GameObject MagicEffect;
+
+
+    void Start() {
+        scoring = GameObject.Find("GameManager").GetComponent<Scoring>();
+    }
 
 
     public void Normal(){
@@ -30,7 +48,9 @@ public class PlayerStyles : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy")){
                 Debug.Log(enemy.gameObject.name+"Enemy hitted!");
-                enemy.gameObject.GetComponent<Enemy>().takeDamage(5);
+                enemy.gameObject.GetComponent<Enemy>().takeDamage(normalDmg);
+
+                scoring.addScore(normalDmg);
             }
 
         }
@@ -53,7 +73,9 @@ public class PlayerStyles : MonoBehaviour
         if (Physics.Raycast(firePoint.position, firePoint.right, out hit, 10f, enemyLayerMask)){
             if (hit.collider.CompareTag("Enemy")){
                 GameObject enemy = hit.collider.gameObject;
-                enemy.GetComponent<Enemy>().takeDamage(10);
+                enemy.GetComponent<Enemy>().takeDamage(laserDmg);
+                scoring.addScore(normalSpecialDmg);
+
                 line.SetPosition(0,firePoint.position);
                 line.SetPosition(1,hit.point);
 
@@ -90,11 +112,14 @@ public class PlayerStyles : MonoBehaviour
 
         Collider[] hitEnemies = Physics.OverlapSphere(firePoint.position + firePoint.right * 0.5f, 1.7f);
 
+ 
+
         foreach (Collider enemy in hitEnemies)
         {
             if (enemy.CompareTag("Enemy")){
                 Debug.Log(enemy.gameObject.name+"Enemy hitted!");
-                enemy.gameObject.GetComponent<Enemy>().takeDamage(10);
+                enemy.gameObject.GetComponent<Enemy>().takeDamage(normalSpecialDmg);
+                scoring.addScore(normalSpecialDmg);
             }
 
         }
@@ -134,7 +159,8 @@ public class PlayerStyles : MonoBehaviour
         foreach (RaycastHit hit in hits){
             if (hit.collider.CompareTag("Enemy")){
                 GameObject enemy = hit.collider.gameObject;
-                enemy.GetComponent<Enemy>().takeDamage(10);
+                enemy.GetComponent<Enemy>().takeDamage(laserDmg);
+                scoring.addScore(normalSpecialDmg);
             }
         }
         line.startWidth=0.3f;
@@ -157,8 +183,10 @@ public class PlayerStyles : MonoBehaviour
     
     public void MagicSpecial(){
         Debug.Log("Cast Magic style special attack");
-        //GameObject go = Instantiate(MagicEffect, this.gameObject.transform.position, Quaternion.identity);
 
+        GameObject go = Instantiate(MagicEffect, this.gameObject.transform.position, Quaternion.identity);
+        Destroy(go,0.25f);
+        
         Collider[] hitEnemies = Physics.OverlapSphere(this.gameObject.transform.position,10f);
         foreach (Collider enemy in hitEnemies)
             {
@@ -170,7 +198,7 @@ public class PlayerStyles : MonoBehaviour
 
             }
 
-        //Destroy(go,0.25f);
+
     }
 
 

@@ -8,8 +8,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (SceneManager.GetActiveScene().name=="Debug Room"){
+        if (SceneManager.GetActiveScene().name=="Monster Room"){
             FindObjectOfType<DebugManager>().enabled = true;
+        }
+        else{
+            FindObjectOfType<DebugManager>().enabled = false;
         }
     }
 
@@ -23,4 +26,5 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over!");
         Destroy(GameObject.Find("Player"));
     }
+
 }

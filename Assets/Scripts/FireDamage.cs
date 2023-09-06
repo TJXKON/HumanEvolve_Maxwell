@@ -24,6 +24,8 @@ public class FireDamage : MonoBehaviour
         if (enemy!=null&&enemy.CompareTag("Enemy")){
                 Debug.Log(enemy.gameObject.name+"Enemy hitted!");
                 enemy.gameObject.GetComponent<Enemy>().takeDamage(dmg);
+
+                GameObject.Find("GameManager").GetComponent<Scoring>().addScore(dmg);
             }
 
     }
