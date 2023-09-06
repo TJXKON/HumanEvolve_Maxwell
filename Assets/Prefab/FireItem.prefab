@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   itemName: Fire
+  pickupEffect: {fileID: 3377181292992421420, guid: 2ae471143347b7d41802b5e2cb7922b7, type: 3}
 --- !u!1001 &3767177833990829515
 PrefabInstance:
   m_ObjectHideFlags: 0

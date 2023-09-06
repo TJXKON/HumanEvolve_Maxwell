@@ -26,6 +26,8 @@ public class Gun : MonoBehaviour
         if (enemy.CompareTag("Enemy"))
         {
             enemy.GetComponent<Enemy>().takeDamage(hitDamage);
+
+            GameObject.Find("GameManager").GetComponent<Scoring>().addScore(hitDamage);
             
             DestroyProjectile();
         }
