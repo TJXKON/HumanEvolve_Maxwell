@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     public int hitDamage = 10;
     public GameObject dropItem;
+
+    public int score = 20;
     private bool playerIframe = false;
     private static GameObject thisEnemy;
 
@@ -47,6 +49,7 @@ public class Enemy : MonoBehaviour
 
     void defeat(){
         thisEnemy = gameObject;
+        GameObject.Find("GameManager").GetComponent<Scoring>().addScore(score);
         Destroy(thisEnemy);
        if (dropItem!=null){
         Instantiate(dropItem, transform.position, Quaternion.identity);

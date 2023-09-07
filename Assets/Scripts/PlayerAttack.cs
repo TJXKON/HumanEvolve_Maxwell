@@ -85,12 +85,14 @@ public class PlayerAttack : MonoBehaviour
         {
             case "Normal":
                 FindObjectOfType<PlayerStyles>().Normal();
-                RaycastHit hit;
-    if (Physics.Raycast(firepoint.position, firepoint.forward, out hit))
+
+    Collider[] hits = Physics.OverlapSphere(firepoint.position + firepoint.right * 0.5f, 1.7f);
+
+    foreach (Collider hit in hits)
     {
-        if (hit.collider.CompareTag("WoodBox"))
+        if (hit.CompareTag("WoodBox"))
         {
-            WoodBox boxController = hit.collider.GetComponent<WoodBox>();
+            WoodBox boxController = hit.GetComponent<WoodBox>();
             if (boxController != null)
             {
                 boxController.OnPlayerAttack();
@@ -116,9 +118,8 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator SpecialAttack(){
         Debug.Log("Charge start");
         //GameObject go = Instantiate(chargeEffect, this.gameObject.transform.position+this.gameObject.transform.up * -2f, Quaternion.identity);
-        GameObject go = Instantiate(chargeEffect, this.gameObject.transform.position+this.gameObject.transform.up * -2f, Quaternion.identity) as GameObject; 
-        go.transform.parent = GameObject.Find("Player").transform;
-
+        GameObject go = Instantiate(chargeEffect, this.gameObject.transform.position+this.gameObject.transform.up * 0f, Quaternion.identity) as GameObject; 
+        go.GetComponent<FollowObject>().setTarget(this.gameObject);
         yield return new WaitForSeconds(charge);
         Debug.Log("Charge end");
          Destroy(go);
