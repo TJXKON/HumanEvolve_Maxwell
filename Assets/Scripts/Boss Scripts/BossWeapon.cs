@@ -9,17 +9,10 @@ public class BossWeapon : MonoBehaviour
     public int swordDamage = 20;
     private Enemy bossHealth;
     public float attackRange;
-    private bool playerIframe = false;
 
     void Start()
     {
         bossHealth = GetComponent<Enemy>();
-    }
-
-    void Update()
-    {
-
-        playerIframe = GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -34,4 +27,15 @@ public class BossWeapon : MonoBehaviour
             }
         }
     }
+
+    public void Attack()
+    {
+        
+    }
+
+    public void EnragedAttack()
+    {
+
+    }
+
 }

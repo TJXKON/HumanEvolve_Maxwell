@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     public int score = 20;
     private bool playerIframe = false;
     private static GameObject thisEnemy;
-    public bool isBossInvinsible = false;
 
     void Awake()
     {
@@ -23,16 +22,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Only for Boss
-        if (isBossInvinsible)
-            return;
-
-        //Only for Boss
-        if (currentHP <= 70)
-        {
-            GetComponent<Animator>().SetBool("IsEnraged", true);
-        }
-
         if (currentHP<=0){
             defeat();
         }

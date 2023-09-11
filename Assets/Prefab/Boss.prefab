@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7599311241526987882}
   - component: {fileID: 2827970364064644405}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3542788605699934934}
   - component: {fileID: 6504912353210859462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3549408629317413150}
   - component: {fileID: 2789860059804824666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1293475395317359112}
   - component: {fileID: 3434255430735902778}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3320254311723666860}
   - component: {fileID: 4820245089351085015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon-Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 314707877203563157}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6172450574757026177}
   - component: {fileID: 6939495108400308064}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hat-Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +607,8 @@ GameObject:
   - component: {fileID: 6334893512968437255}
   - component: {fileID: 8580091105474851213}
   - component: {fileID: 4144048230569408016}
-  m_Layer: 0
+  - component: {fileID: 69101836857800069}
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -632,7 +633,7 @@ Transform:
   - {fileID: 958002221130982437}
   - {fileID: 314707877203563157}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &477861328662767910
 Rigidbody:
@@ -719,7 +720,7 @@ MonoBehaviour:
   currentHP: 0
   hitDamage: 2
   dropItem: {fileID: 0}
-  isBossInvinsible: 0
+  score: 20
 --- !u!114 &447156816392667974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,6 +782,19 @@ MonoBehaviour:
   enemyCooldownTime: 4
   isCooldown: 0
   projectile: {fileID: 1106024740886403048, guid: 78b314e36a8989045aecdcd0ee19fa47, type: 3}
+--- !u!114 &69101836857800069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784562119181107656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83bc9c55b3f82b443a6c5c77e91e8fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBossInvinsible: 0
 --- !u!1 &8139695764285091656
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4808744830256798642}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -823,7 +837,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7864800120563622573}
   - component: {fileID: 520039171384824606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sword Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +890,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3790088637208347951}
   - component: {fileID: 6974539839662902159}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

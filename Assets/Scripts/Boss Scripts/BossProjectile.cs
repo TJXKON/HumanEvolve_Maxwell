@@ -11,17 +11,11 @@ public class BossProjectile : MonoBehaviour
     public bool isCooldown = false;
     public GameObject projectile;
     private Enemy bossHealth;
-    private bool playerIframe = false;
 
     void Start()
     {
         timeBetweenShot = startTimeBetweenShot;
         bossHealth = GetComponent<Enemy>();
-    }
-
-    void Update()
-    {
-        playerIframe = GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe;
     }
 
     public void ProjectileAttack()

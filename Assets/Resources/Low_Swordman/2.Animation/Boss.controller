@@ -216,7 +216,7 @@ AnimatorStateMachine:
     m_Position: {x: 350, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3365939504825934481}
-    m_Position: {x: 610, y: 50, z: 0}
+    m_Position: {x: 620, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -929640696689619366}
     m_Position: {x: 350, y: 110, z: 0}
@@ -272,7 +272,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e17cd626ab251da45970adea384dc68a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 59b0753bbecfb3148bc721048bb07f04, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -325,6 +325,25 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-2054273547264386804
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6cf849edc789644b8ae87127d1a625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3.3
+  attackRange: 3
+  player: {fileID: 0}
+  rb: {fileID: 0}
+  boss: {fileID: 0}
+  jump: {fileID: 0}
+  projectile: {fileID: 0}
 --- !u!1101 &-1765553368287036811
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -403,6 +422,21 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-913239589347182142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00621a2485a083248b453b3abc7f4eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3.3
+  attackRange: 3
+  playerObject: {fileID: 4228845245137039991, guid: d576344e25e390345b92c27b663036f5, type: 3}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -417,25 +451,25 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Jump
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Projectile
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: IsEnraged
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -464,7 +498,7 @@ AnimatorState:
   - {fileID: -8816738813981940738}
   - {fileID: -3152761539927528247}
   m_StateMachineBehaviours:
-  - {fileID: 2869053723928944233}
+  - {fileID: -913239589347182142}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -506,20 +540,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!114 &2869053723928944233
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00621a2485a083248b453b3abc7f4eb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3.3
-  attackRange: 3
 --- !u!1101 &3035439487051081253
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -583,6 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.2
   attackRange: 4
+  playerObject: {fileID: 4228845245137039991, guid: d576344e25e390345b92c27b663036f5, type: 3}
 --- !u!1101 &5439701457138128660
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

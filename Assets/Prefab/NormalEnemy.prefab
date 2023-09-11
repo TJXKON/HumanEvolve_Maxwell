@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   stoppingDistance: 1
-  enemyAnimation: {fileID: 0}
+  enemyAnimation: {fileID: 5939724681903121274}
   waitTime: 1
   patrolDestination:
   - {fileID: 6603483671336766518}
