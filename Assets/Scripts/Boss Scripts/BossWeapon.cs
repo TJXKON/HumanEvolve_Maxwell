@@ -10,14 +10,20 @@ public class BossWeapon : MonoBehaviour
     private Enemy bossHealth;
     public float attackRange;
 
+    private bool playerIframe = false;
+
     void Start()
     {
         bossHealth = GetComponent<Enemy>();
     }
 
+    void Update() {
+        playerIframe = GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe;
+    }
+
     public void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && !playerIframe)
         {
             FindObjectOfType<PlayerStatusManager>().takeDamage(swordDamage);
 
