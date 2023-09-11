@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
 
     public int maxHP = 20;
-    int currentHP;
+    public int currentHP;
 
     public int hitDamage = 10;
     public GameObject dropItem;
@@ -22,7 +22,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (currentHP<=0){
             defeat();
         }

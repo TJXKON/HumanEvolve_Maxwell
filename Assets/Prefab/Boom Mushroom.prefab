@@ -95,7 +95,7 @@ Transform:
   - {fileID: 8959611380059237556}
   - {fileID: 6814533113319805689}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3450297055260807746
 SpriteRenderer:
@@ -402,8 +402,11 @@ MonoBehaviour:
   moveSpeed: 5
   firePoint: {fileID: 921105688741109407}
   boomCountdownEffect: {fileID: 7871407171178250460, guid: 8d720be9907fcf645bef5bc6abf87660, type: 3}
-  enemyAnimation: {fileID: 2607578476452795131}
+  enemySprite: {fileID: 2607578476452795131}
   boomEffect: {fileID: 3327284279331517867, guid: e1b82a9af8b41214a85e395efe88a592, type: 3}
+  countdownTime: 5
+  dropItem: {fileID: 0}
+  flashMaterial: {fileID: 0}
   waitTime: 1
   patrolDestination:
   - {fileID: 8959611380059237556}
