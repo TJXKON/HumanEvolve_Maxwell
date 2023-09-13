@@ -5,55 +5,49 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class MainMenu : MonoBehaviour
 {
-    private void Start()
-    {
-        if (PlayerPrefs.HasKey("master") && PlayerPrefs.HasKey("music") && PlayerPrefs.HasKey("SFX"))
-        {
-            LoadVolume();
-        }
-        else
-        {
-            SetMasterVolume();
-            SetMusicVolume();
-            SetSFXVolume();
-        }
-
-        resolutions=Screen.resolutions;
-        resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-        int currentResolutionIndex = 0;
-
-        for(int i=0;i<resolutions.Length;i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
-
-            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-
-        resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-    }
     [Header("Volume Setting")]
     [SerializeField] private AudioMixer myMixer;
+    [SerializeField] private Slider masterVolumeSlider = null;
+    [SerializeField] private Slider musicVolumeSlider = null;
+    [SerializeField] private Slider sfxVolumeSlider = null;
     [SerializeField] private TMP_Text masterVolumeTextValue;
     [SerializeField] private TMP_Text musicVolumeTextValue;
     [SerializeField] private TMP_Text sfxVolumeTextValue;
-    [SerializeField] private Slider masterVolumeSlider=null;
-    [SerializeField] private Slider musicVolumeSlider = null;
-    [SerializeField] private Slider sfxVolumeSlider = null;
     [SerializeField] private float defaultMasterVolume = 0.7f;
     [SerializeField] private float defaultMusicVolume = 0.7f;
     [SerializeField] private float defaultSFXVolume = 0.3f;
+
+    [Header("Resolution Dropdowns")]
+    public TMP_Dropdown resolutionDropdown;
+    private Resolution[] resolutions;
+
+    [Header("Graphics Settings")]
+    [SerializeField] private Slider brightnessSlider;
+    [SerializeField] private TMP_Text brightnessTextValue;
+    [SerializeField] private float defaultBrightness = 1;
+    [SerializeField] private PostProcessProfile brightness;
+    AutoExposure exposure;
+    [Space(10)]
+    [SerializeField] private TMP_Dropdown qualityDropdown;
+    [SerializeField] private Toggle fullScreenToggle;
+    private int qualityLevel;
+    private bool isFullScreen;
+    private float brightnessLevel;
+
+    [Header("Gameplay Settings")]
+    [SerializeField] private Slider gameSpeedSlider = null;
+    [SerializeField] private TMP_Text gameSpeedTextValue;
+    [SerializeField] private float defaultGameSpeed= 1.0f;
+
+    [Header("Levels To Load")]
+    //public string newGameLevel;
+    private string levelToLoad;
+    [SerializeField] private GameObject noSavedGameDialog = null;
+
     public void SetMasterVolume()
     {
         float masterVolume = masterVolumeSlider.value;
@@ -77,20 +71,32 @@ public class MainMenu : MonoBehaviour
     }
     public void LoadVolume()
     {
-        Debug.Log("Loading volume ......");
-        masterVolumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
-        musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-
-        SetMasterVolume();
-        SetMusicVolume();
-        SetSFXVolume();
+        if (masterVolumeSlider != null)
+        {
+            masterVolumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+            SetMasterVolume();
+        }
+        if (masterVolumeSlider != null)
+        {
+            musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+            SetMusicVolume();
+        }
+        if (masterVolumeSlider != null)
+        {
+            sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+            SetSFXVolume();
+        }
     }
     public void ResetButton(string MenuType)
     {
+        if (MenuType == "Gameplay")
+        {
+            gameSpeedSlider.value = defaultGameSpeed;
+            gameSpeedTextValue.text = defaultGameSpeed.ToString("0.0");
+        }
+
         if (MenuType == "Graphics")
         {
-            //Reset brightness value
             brightnessSlider.value = defaultBrightness;
             brightnessTextValue.text = defaultBrightness.ToString("0.0");
 
@@ -117,11 +123,7 @@ public class MainMenu : MonoBehaviour
             sfxVolumeTextValue.text = defaultSFXVolume.ToString("0.0");
         }
     }
-
-    [Header("Levels To Load")]
-    //public string newGameLevel;
-    private string levelToLoad;
-    [SerializeField] private GameObject noSavedGameDialog = null;
+ 
     public void NewGameDialogYes(int levelId)
     {
         string levelName = "Level " + levelId;
@@ -148,55 +150,95 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    [Header("Graphics Settings")]
-    [SerializeField] private Slider brightnessSlider = null;
-    [SerializeField] private TMP_Text brightnessTextValue = null;
-    [SerializeField] private float defaultBrightness = 1;
-
-    [Space(10)]
-    [SerializeField] private TMP_Dropdown qualityDropdown;
-    [SerializeField] private Toggle fullScreenToggle;
-
-    private int qualityLevel;
-    private bool isFullScreen;
-    private float brightnessLevel;
-
-    public void SetBrightness(float brightness)
+    public void SetBrightness(float brightnessValue)
     {
-        brightnessLevel=brightness;
-        brightnessTextValue.text = brightness.ToString("0.0");
+        exposure.keyValue.value=brightnessValue;
+        brightnessTextValue.text = brightnessValue.ToString("0.0");
     }
 
-    public void SetFullScreen(bool FullScreen) 
+    public void SetFullScreen(bool FullScreen)
     {
-        isFullScreen = FullScreen;    
+        isFullScreen = FullScreen;
     }
 
-    public void SetQuality(int qualityIndex)
+    public void SetQualityLevel(int qualityIndex)
     {
-        qualityLevel=qualityIndex;
+        Debug.Log(qualityLevel);
+        qualityLevel = qualityIndex;
     }
 
     public void GraphicsApply()
     {
-        //Change your brightness with your post processing or whatever it is
-        PlayerPrefs.SetFloat("masterBrightness", brightnessLevel);
-
         PlayerPrefs.SetInt("masterQuality", qualityLevel);
         QualitySettings.SetQualityLevel(qualityLevel);
 
-        PlayerPrefs.SetInt("masterFullScreen",(isFullScreen ? 1:0));
+        PlayerPrefs.SetInt("masterFullScreen", (isFullScreen ? 1 : 0));
         Screen.fullScreen = isFullScreen;
     }
-
-    [Header("Resolution Dropdowns")]
-    public TMP_Dropdown resolutionDropdown;
-    private Resolution[] resolutions;
 
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
-        Screen.SetResolution(resolution.width,resolution.height,Screen.fullScreen);
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+    }
+    public void SetGameSpeed(float speedValue)
+    {
+        float newSpeed =  speedValue;
+        Time.timeScale = newSpeed;
+        gameSpeedTextValue.text = newSpeed.ToString("0.0");
     }
 
+    private void Start()
+    {
+        
+        LoadVolume();
+        if(gameSpeedSlider != null)
+        {
+            gameSpeedSlider.onValueChanged.AddListener(SetGameSpeed);
+        }
+
+ 
+        if (brightnessSlider != null)
+        {
+            brightness.TryGetSettings(out exposure);
+            SetBrightness(brightnessSlider.value);
+        }
+
+        qualityDropdown.onValueChanged.AddListener(SetQualityLevel);
+
+        resolutions = Screen.resolutions;
+        if (resolutionDropdown != null)
+        {
+            resolutionDropdown.ClearOptions(); // Clear existing options in the resolutionDropdown
+        }
+
+        // Initialize the options list
+        List<string> options = new List<string>();
+        int currentResolutionIndex = 0;
+
+        // Populate the options list with resolution options
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            string option = resolutions[i].width + " x " + resolutions[i].height;
+            options.Add(option);
+
+            if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
+            {
+                currentResolutionIndex = i;
+            }
+        }
+
+        // Add the new options list to the resolutionDropdown
+        if (resolutionDropdown != null)
+        {
+            resolutionDropdown.AddOptions(options);
+        }
+
+        // Set the value and refresh the shown value of the resolutionDropdown
+        if (resolutionDropdown != null)
+        {
+            resolutionDropdown.value = currentResolutionIndex;
+            resolutionDropdown.RefreshShownValue();
+        }
+    }
 }

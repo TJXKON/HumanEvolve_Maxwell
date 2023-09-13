@@ -14,13 +14,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - PostProcessing
   - Water
   - UI
   - Ground
   - Enemy
   - HealCherry
-  - 
+  - Player
   - 
   - 
   - 
