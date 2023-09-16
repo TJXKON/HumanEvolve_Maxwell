@@ -11,6 +11,10 @@ TagManager:
   - Trap
   - HealCherry
   - WoodBox
+  - Box
+  - Key
+  - Door
+  - Button
   layers:
   - Default
   - TransparentFX

@@ -11,9 +11,9 @@ public class Spikehead : MonoBehaviour
     private bool canDamage = true; // Flag to check if the enemy can damage the player
     private float lastHitTime; // Timestamp of the last hit
 
-    public float moveSpeed = 2f; // Speed of movement
-    public float moveDistance = 2f; // Distance of each movement
-    public float pauseDuration = 0.5f; // Pause duration between movements
+    public float moveSpeed = 2f; 
+    public float moveDistance = 2f; 
+    public float pauseDuration = 0.5f; 
 
     private Vector3[] moveDirections; // Array of movement directions
     private int directionIndex = 0; // Index of the current direction
@@ -24,7 +24,7 @@ public class Spikehead : MonoBehaviour
         {
             PlayerStatusManager playerStatus = collision.gameObject.GetComponent<PlayerStatusManager>();
 
-            Debug.Log("Player collided with spike.");
+            Debug.Log("Player collided with spikehead.");
             if (playerStatus != null)
             {
                 playerStatus.currentHP -= damageAmount;
@@ -37,7 +37,6 @@ public class Spikehead : MonoBehaviour
                     playerRigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
                 }
 
-                // Set the cooldown and update the last hit time
                 canDamage = false;
                 lastHitTime = Time.time;
                 StartCoroutine(ResetCooldown());
@@ -53,20 +52,17 @@ public class Spikehead : MonoBehaviour
 
     private void Start()
     {
-        // Define the movement directions: left, right, up, down
         moveDirections = new Vector3[] {
             Vector3.left, Vector3.right, Vector3.up, Vector3.down
         };
 
-       
-
-        // Start the movement sequence
+    
         StartCoroutine(MovementSequence());
     }
 
     IEnumerator MovementSequence()
     {
-        while (true) // Keeps the sequence looping
+        while (true) 
         {
             Vector3 startPosition = transform.position;
             Vector3 targetPosition = startPosition + moveDirections[directionIndex] * moveDistance;

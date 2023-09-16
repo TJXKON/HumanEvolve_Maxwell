@@ -127,7 +127,7 @@ Transform:
   - {fileID: 3167356342179350212}
   - {fileID: 8336006803782009929}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &29536602699868465
 MonoBehaviour:
@@ -154,6 +154,7 @@ MonoBehaviour:
   jumpForce: 1000
   exJumpRate: 0.5
   crouchSpeedRate: 0.4
+  pushForce: 10
 --- !u!54 &5739547811629585984
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -287,12 +288,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   punchEffect: {fileID: 2767729299977415279, guid: c724e2b4d0cf2e945b5d6f4fe357216d, type: 3}
+  normalDmg: 5
+  normalSpecialDmg: 10
   fireEffect: {fileID: 3327284279331517867, guid: c7bcfe9738433064aa188d920fb19972, type: 3}
+  fireSpecialEffect: {fileID: 3327284279331517867, guid: 33233ad36e7eeac4aae3fca58bd65c23, type: 3}
   laser: {fileID: 661449637634449609, guid: 991d44a9ac2235c4cb4c5f82ff1f46d9, type: 3}
+  laserDmg: 10
   gunBullet: {fileID: 2366419286933068288, guid: 98401865ea8fa5141be892ba9313fc8b, type: 3}
   MagicEffect: {fileID: 5085946394126448151, guid: 834a5d0c39db68443b9a79116b8ef5b3, type: 3}
-  fireSpecialEffect: {fileID: 3327284279331517867, guid: 33233ad36e7eeac4aae3fca58bd65c23, type: 3}
-  NormalDmg: 5
 --- !u!1 &5155768799771171166
 GameObject:
   m_ObjectHideFlags: 0

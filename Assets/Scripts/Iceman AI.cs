@@ -8,8 +8,8 @@ public class IcemanAI : MonoBehaviour
     [SerializeField] private float moveSpeed;   // Movement speed of the enemy.
     [SerializeField] private float stoppingDistance;   // Distance at which the enemy stops moving towards the player.
     [SerializeField] private float retreatDistance; // Backward when player apporoach 
-    //[SerializeField] private GameObject enemyAnimation;
-    //private Animator anim;
+    [SerializeField] private GameObject enemyAnimation;
+    private Animator anim;
 
     private Transform player;   // Reference to the player's Transform component.
 
@@ -35,7 +35,7 @@ public class IcemanAI : MonoBehaviour
         localScale = sprite.localScale;
         player = GameObject.FindGameObjectWithTag("Player").transform;   // Assuming the player tag is set to "Player".
         timeBetweenShot = startTimeBetweenShot;
-        //anim = enemyAnimation.GetComponent<Animator>();
+        anim = enemyAnimation.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,19 +48,19 @@ public class IcemanAI : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
             {
-                //anim.SetBool("walk", true);
+                anim.SetBool("walk", true);
                 //Apporach player
                 transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
             }
             else if (Vector2.Distance(transform.position, player.position) < stoppingDistance && Vector2.Distance(transform.position, player.position) > retreatDistance)
             {
-                //anim.SetBool("walk", false);
+                anim.SetBool("walk", false);
                 transform.position = this.transform.position;
                 IcemanAttack();
             }
             else if (Vector2.Distance(transform.position, player.position) < retreatDistance)
             {
-                //anim.SetBool("walk", true);
+                anim.SetBool("walk", true);
                 //Away from distance if distance between them is too short
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -moveSpeed * Time.deltaTime);
             }
@@ -71,7 +71,7 @@ public class IcemanAI : MonoBehaviour
             //Start patrol if enemy are not sense player
             if (transform.position != patrolDestination[currentPointIndex].position)
             {
-                //anim.SetBool("walk", true);
+                anim.SetBool("walk", true);
                 transform.position = Vector2.MoveTowards(transform.position, patrolDestination[currentPointIndex].position, moveSpeed * Time.deltaTime);
             }
             else
@@ -143,7 +143,7 @@ public class IcemanAI : MonoBehaviour
 
     IEnumerator Wait()
     {
-        //anim.SetBool("walk", false);
+        anim.SetBool("walk", false);
         yield return new WaitForSeconds(waitTime);
 
         currentPointIndex++;
