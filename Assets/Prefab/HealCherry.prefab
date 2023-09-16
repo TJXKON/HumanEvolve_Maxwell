@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 20
+  character: {fileID: 0}
 --- !u!135 &203333798035197196
 SphereCollider:
   m_ObjectHideFlags: 0

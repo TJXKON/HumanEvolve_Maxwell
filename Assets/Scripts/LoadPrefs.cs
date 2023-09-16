@@ -89,6 +89,15 @@ public class LoadPrefs : MonoBehaviour
                 brightnessTextValue.text = localBrightness.ToString("0.0");
                 brightnessSlider.value = localBrightness;
             }
+            else
+            {
+                float defaultBrightness = 1.8f;
+                brightnessTextValue.text = defaultBrightness.ToString("0.0");
+                brightnessSlider.value = defaultBrightness;
+
+                // Save the default brightness to PlayerPrefs
+                PlayerPrefs.SetFloat("masterBrightness", defaultBrightness);
+            }
         }
     }
 
