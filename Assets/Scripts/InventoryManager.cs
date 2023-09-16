@@ -4,22 +4,42 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    private List<string> inventory = new List<string>();
+     public static InventoryManager instance;
 
-    public void AddKeyToInventory()
+    private List<GameObject> inventory = new List<GameObject>();
+
+    private void Awake()
+{
+    if (instance == null)
     {
-       
-        string keyIdentifier = "Key";
+        instance = this;
+        inventory = new List<GameObject>(); // Initialize the inventory list
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
 
-        if (!inventory.Contains(keyIdentifier))
+    public void AddToInventory(GameObject item)
+    {
+        inventory.Add(item);
+        item.SetActive(false); // Deactivate the item in the scene
+        Debug.Log(item.name + " added to inventory.");
+    }
+
+    public bool HasKey()
+{
+    foreach (GameObject item in inventory)
+    {
+        if (item.CompareTag("Key")) 
         {
-            inventory.Add(keyIdentifier);
-            Debug.Log("Key added to inventory.");
-        }
-        else
-        {
-            Debug.Log("Key is already in inventory.");
+            Debug.Log("HasKey : true");
+            return true;
         }
     }
+    Debug.Log("HasKey : false");
+    return false;
+}
 
 }
