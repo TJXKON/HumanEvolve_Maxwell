@@ -9,6 +9,8 @@ public class Dialogue : MonoBehaviour
 
     public GameObject indicator;
 
+   public GameObject keyObject;
+
     public List<string> dialogues;
 
     public TMP_Text dialogueText;
@@ -23,10 +25,13 @@ public class Dialogue : MonoBehaviour
 
     private bool waitForNext;
 
+    private bool hasKey; 
+
     private void Awake()
     {
         ToogleIndicator(false);
         ToogleWindow(false);
+        
     }
 
     private void ToogleWindow(bool show)
@@ -59,9 +64,10 @@ public class Dialogue : MonoBehaviour
     }
 
     public void EndDialogue()
-    {
-        ToogleWindow(false);
-    }
+{
+    ToogleWindow(false);
+    keyObject.SetActive(true); // Activate the key GameObject
+}
 
  IEnumerator Writting()
     {

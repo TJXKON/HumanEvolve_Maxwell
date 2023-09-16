@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float jumpForce = 300f;
     [SerializeField] public float exJumpRate = 0.5f;
     [SerializeField] public float crouchSpeedRate = 0.4f;
+    [SerializeField] private float pushForce = 10f;
     // Start is called before the first frame update
     // Update is called once per frame
     void Update()
@@ -72,6 +73,11 @@ public class PlayerMovement : MonoBehaviour
             }     
 
         }
+
+         if (Input.GetKeyDown(KeyCode.E))
+        {
+            InteractWithDoor();
+        }
     }
 
     void FixedUpdate()
@@ -83,6 +89,15 @@ public class PlayerMovement : MonoBehaviour
             }
             else{
                 rb.velocity = new Vector2(horizontal * speed * Time.fixedDeltaTime, rb.velocity.y);
+            }
+        }
+
+         if (!isAttacking)
+        {
+            // Check if the player is holding the interact key (E)
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                InteractWithBox();
             }
         }
 
@@ -119,6 +134,42 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             return false;
+        }
+    }
+
+     private void InteractWithBox()
+    {
+        // Check if the player is grounded and close to a box
+        if (isGrounded())
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.5f, LayerMask.GetMask("Box"));
+
+          foreach (Collider hitCollider in hitColliders)
+    {
+        Rigidbody boxRigidbody = hitCollider.GetComponent<Rigidbody>();
+        if (boxRigidbody != null)
+        {
+            // Use the pushForce variable to apply force to the box
+            Vector3 pushDirection = facingRight ? transform.right : -transform.right;
+            boxRigidbody.AddForce(pushDirection * pushForce, ForceMode.Impulse);
+        }
+    }
+        }
+    }
+
+    private void InteractWithDoor()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 2f))
+        {
+            if (hit.collider.CompareTag("Door"))
+            {
+                Door door = hit.collider.GetComponent<Door>();
+                if (door != null)
+                {
+                    door.TryOpenDoor();
+                }
+            }
         }
     }
 
