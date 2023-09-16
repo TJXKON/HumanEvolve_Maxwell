@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
 {
     public float speed;
     public int hitDamage = 5;
-
+    [SerializeField] public GameObject impact;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,8 @@ public class Gun : MonoBehaviour
         {
             enemy.GetComponent<Enemy>().takeDamage(hitDamage);
 
+            GameObject.Find("GameManager").GetComponent<Scoring>().addScore(hitDamage);
+            
             DestroyProjectile();
         }
         else if (enemy.CompareTag("Ground"))
@@ -43,6 +45,8 @@ public class Gun : MonoBehaviour
 
     void DestroyProjectile()
     {
+        Transform tr = this.gameObject.transform;
+        GameObject go = Instantiate(impact, tr.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

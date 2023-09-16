@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
 
     [SerializeField] public Transform firepoint;
+    [SerializeField] public GameObject chargeEffect;
     [SerializeField] public Animator animator;
     [SerializeField] public float attackRate = 1f;
     [SerializeField] public float charge = 1f;
@@ -19,10 +20,15 @@ public class PlayerAttack : MonoBehaviour
     [HideInInspector] public float normalCD = 0f;
     [HideInInspector] public float specialCD = 0f;
 
+    //UIs
+    [Header("UIs")]
+    public Image specialIcon;
+   
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        specialIcon.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -38,6 +44,9 @@ public class PlayerAttack : MonoBehaviour
             else if (Input.GetButtonDown("Fire2") && specialCD<=0f){
                 isAttacking = true;
                 timer = GlobalcastTime+charge;
+
+                specialIcon.fillAmount = 1;
+
                 StartCoroutine(SpecialAttack());
             }
         }
@@ -57,6 +66,11 @@ public class PlayerAttack : MonoBehaviour
         }
         if (specialCD>=0f){
             specialCD -= Time.deltaTime * 1f;
+            specialIcon.fillAmount -= Time.deltaTime*1f/specialMaxCooldown;
+
+            if(specialIcon.fillAmount<=0){
+                specialIcon.fillAmount=0;
+            }
         }
 
     }
@@ -71,6 +85,20 @@ public class PlayerAttack : MonoBehaviour
         {
             case "Normal":
                 FindObjectOfType<PlayerStyles>().Normal();
+
+    Collider[] hits = Physics.OverlapSphere(firepoint.position + firepoint.right * 0.5f, 1.7f);
+
+    foreach (Collider hit in hits)
+    {
+        if (hit.CompareTag("WoodBox"))
+        {
+            WoodBox boxController = hit.GetComponent<WoodBox>();
+            if (boxController != null)
+            {
+                boxController.OnPlayerAttack();
+            }
+        }
+    }
                 break;
             case "Fire":
                 FindObjectOfType<PlayerStyles>().Fire();
@@ -89,13 +117,21 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator SpecialAttack(){
         Debug.Log("Charge start");
+        //GameObject go = Instantiate(chargeEffect, this.gameObject.transform.position+this.gameObject.transform.up * -2f, Quaternion.identity);
+        GameObject go = Instantiate(chargeEffect, this.gameObject.transform.position+this.gameObject.transform.up * 0f, Quaternion.identity) as GameObject; 
+        go.GetComponent<FollowObject>().setTarget(this.gameObject);
         yield return new WaitForSeconds(charge);
         Debug.Log("Charge end");
+         Destroy(go);
 
         //animator.SetTrigger("specialAttack");
         animator.speed = attackRate;    //Animation speed based on attack rate
         Debug.Log("SpecialAttack");
+        
+       
         specialCD = specialMaxCooldown;
+
+        
 
         switch (FindObjectOfType<PlayerStatusManager>().style)
         {

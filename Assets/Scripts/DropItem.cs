@@ -14,6 +14,9 @@ public class DropItem : MonoBehaviour
     private bool pickable = false;
     private static GameObject thisItem;
 
+    public GameObject pickupEffect;
+
+
 
 
     // Update is called once per frame
@@ -49,6 +52,14 @@ public class DropItem : MonoBehaviour
         if (itemType == ItemTypes.style){
             FindObjectOfType<PlayerStatusManager>().style=itemName;
             Debug.Log("Player style changed to "+itemName);
+
+            
+
+            GameObject g = GameObject.Find("GroundCheck");
+            GameObject go = Instantiate(pickupEffect,new Vector3 (g.transform.position.x,g.transform.position.y,0f), Quaternion.identity);
+            //go.transform.parent = GameObject.Find("Player").transform;
+            go.GetComponent<FollowObject>().setTarget(g);
+            Destroy(go,0.8f);
         }
         thisItem = gameObject;
         Destroy(thisItem);

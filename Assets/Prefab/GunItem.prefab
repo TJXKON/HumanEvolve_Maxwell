@@ -69,6 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   itemName: Gun
+  pickupEffect: {fileID: 3377181292992421420, guid: 588ad1d1b446ed2488df1ef87395524b, type: 3}
+  ground: {fileID: 0}
 --- !u!1001 &1495062252461272912
 PrefabInstance:
   m_ObjectHideFlags: 0

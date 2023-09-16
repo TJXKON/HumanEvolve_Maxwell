@@ -6,10 +6,12 @@ public class Enemy : MonoBehaviour
 {
 
     public int maxHP = 20;
-    int currentHP;
+    public int currentHP;
 
     public int hitDamage = 10;
     public GameObject dropItem;
+
+    public int score = 20;
     private bool playerIframe = false;
     private static GameObject thisEnemy;
 
@@ -23,16 +25,20 @@ public class Enemy : MonoBehaviour
         if (currentHP<=0){
             defeat();
         }
+
+        //Player take damage enable monitor
+        playerIframe = GameObject.Find("Player").GetComponent<PlayerStatusManager>().Iframe;
     }
 
     //Hit Damage
     private void OnTriggerEnter(Collider collider)
     {
+        
         if (collider.tag=="Player" && !playerIframe){
             playerIframe = true;
             Debug.Log("Player hurted by enemy collision!");
             FindObjectOfType<PlayerStatusManager>().takeDamage(hitDamage);
-            StartCoroutine(Cooldown(1f));
+     
         }
     }
 
@@ -42,6 +48,7 @@ public class Enemy : MonoBehaviour
 
     void defeat(){
         thisEnemy = gameObject;
+        GameObject.Find("GameManager").GetComponent<Scoring>().addScore(score);
         Destroy(thisEnemy);
        if (dropItem!=null){
         Instantiate(dropItem, transform.position, Quaternion.identity);
@@ -49,10 +56,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    IEnumerator Cooldown(float time){
-        yield return new WaitForSeconds(time);
-        playerIframe = false;
-    }
 
     void OnDestroy(){
         if (thisEnemy == gameObject){

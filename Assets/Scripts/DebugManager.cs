@@ -4,24 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class DebugManager : MonoBehaviour
 {
-    [SerializeField] public Text hpText;
-    [SerializeField] public Text cdText;
 
 
-    void Awake(){
+    void Start(){
         Debug.Log("**Developer mode** \nSwap Style: \n1 - Normal \n2 - Fire \n3 - Laser \n4 - Gun \n5 - Magic");
     }
     // Update is called once per frame
     void Update()
     {
-
-        if (GameObject.Find("Player")!=null){
-            hpText.text="HP: "+FindObjectOfType<PlayerStatusManager>().currentHP.ToString();
-        }
-
-        if (GameObject.Find("Player")!=null){
-            cdText.text="CD: "+FindObjectOfType<PlayerAttack>().normalCD.ToString()+"\n"+FindObjectOfType<PlayerAttack>().specialCD.ToString();
-        }
 
 
         if(Input.GetKeyDown(KeyCode.Alpha1)){
