@@ -4,57 +4,79 @@ using UnityEngine;
 
 public class ControlPlatform : MonoBehaviour
 {
-   public float floatDistance = 1.0f;
-    public float floatSpeed = 1.0f;
+    private bool isMovingLeft = false;
+    private bool isMovingRight = false;
 
-    private Vector3 startPosition;
-    private Vector3 targetPosition;
-    private float timer;
-    private bool isPlayerOnPlatform = false;
+    public float moveSpeed = 5.0f; // Adjust this speed as needed
+    public float moveDistance = 5.0f; // The total distance the platform should move
+
+    private float initialPositionX; // The initial X position of the platform
+    private float currentDistance = 0.0f; // The current distance the platform has moved
+
+    // Reference to the player
     private Transform playerTransform;
 
-    private bool moveLeft = false;
-    private bool returnToStart = false;
-
-    void Start()
+    private void Start()
     {
-        startPosition = transform.position;
-        targetPosition = startPosition; 
+        initialPositionX = transform.position.x;
     }
 
-    void Update()
+    private void Update()
     {
-        if (returnToStart)
+        if (isMovingLeft)
         {
-            // Move the platform back to the start position
-            float step = floatSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, startPosition, step);
-
-            if (transform.position == startPosition)
-            {
-                returnToStart = false;
-            }
+            MoveLeft();
         }
-        else if (moveLeft)
+        else if (isMovingRight)
         {
-            timer += Time.deltaTime * floatSpeed;
-            float xPosition = startPosition.x + Mathf.Sin(timer) * floatDistance;
-            Vector3 newPosition = new Vector3(xPosition, transform.position.y, transform.position.z);
-            transform.position = newPosition;
-
-            if (isPlayerOnPlatform && playerTransform != null)
-            {
-                Vector3 playerRelativePosition = playerTransform.position - transform.position;
-                playerTransform.position = newPosition + playerRelativePosition;
-            }
+            MoveRight();
         }
+
+        // Check if the platform has moved the desired distance
+        if (Mathf.Abs(transform.position.x - initialPositionX) >= moveDistance)
+        {
+            // Stop the platform
+            isMovingLeft = false;
+            isMovingRight = false;
+        }
+
+        // Check if the player is on the platform and update their position
+        if (playerTransform != null)
+        {
+            Vector3 playerRelativePosition = playerTransform.position - transform.position;
+            playerTransform.position = transform.position + playerRelativePosition;
+        }
+    }
+
+    public void MoveLeft()
+    {
+        // Move the platform to the left
+        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        currentDistance += moveSpeed * Time.deltaTime;
+    }
+
+    public void MoveRight()
+    {
+        // Move the platform to the right
+        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        currentDistance += moveSpeed * Time.deltaTime;
+    }
+
+    public void MoveLeft(bool move)
+    {
+        isMovingLeft = move;
+    }
+
+    public void MoveRight(bool move)
+    {
+        isMovingRight = move;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isPlayerOnPlatform = true;
+            // Set the player as a child of the platform
             playerTransform = collision.transform;
             playerTransform.SetParent(transform);
         }
@@ -64,19 +86,9 @@ public class ControlPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isPlayerOnPlatform = false;
+            // Release the player from being a child of the platform
             playerTransform.SetParent(null);
-        }
-    }
-
-    public void MoveLeft(bool shouldMoveLeft)
-    {
-        moveLeft = shouldMoveLeft;
-
-        // If the button on the platform is pressed, return to the start position
-        if (!moveLeft)
-        {
-            returnToStart = true;
+            playerTransform = null;
         }
     }
 }
