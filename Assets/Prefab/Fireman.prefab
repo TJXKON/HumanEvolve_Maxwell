@@ -89,7 +89,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7562528278010887320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.221, y: -0.063, z: 0}
+  m_LocalPosition: {x: 0.208, y: -0.081, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -196,20 +196,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1347125498789785438, guid: 799e78482282b98468eba1692da75489, type: 3}
+      propertyPath: maxHP
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1347125498789785438, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: dropItem
       value: 
-      objectReference: {fileID: 4144922047240548959, guid: 606a5bedd21c630418da174c3aecb5e2, type: 3}
+      objectReference: {fileID: 4144922047240548959, guid: d06735222ca9f9d44ba95524b42f2a84, type: 3}
+    - target: {fileID: 1347125498789785438, guid: 799e78482282b98468eba1692da75489, type: 3}
+      propertyPath: hitDamage
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2370130132936475564, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Name
       value: SampleEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 2435769802555298026, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Size.x
-      value: 0.73809433
+      value: 0.3306889
       objectReference: {fileID: 0}
     - target: {fileID: 2435769802555298026, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Size.y
-      value: 0.43953198
+      value: 0.4301121
       objectReference: {fileID: 0}
     - target: {fileID: 2435769802555298026, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Size.z
@@ -217,15 +225,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2435769802555298026, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Center.x
-      value: 0.045335773
+      value: 0.011188847
       objectReference: {fileID: 0}
     - target: {fileID: 2435769802555298026, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Center.y
-      value: -0.053444736
+      value: -0.048734795
       objectReference: {fileID: 0}
     - target: {fileID: 2435769802555298026, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Center.z
-      value: -0.09498704
+      value: -0.09498703
       objectReference: {fileID: 0}
     - target: {fileID: 4111409678382324292, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: patrolDestination.Array.data[0]
@@ -237,11 +245,11 @@ PrefabInstance:
       objectReference: {fileID: 7138114554444941467, guid: f904f746e8d0d6043a2c54c99653991e, type: 3}
     - target: {fileID: 6308872725280228118, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Size.x
-      value: 0.68326694
+      value: 0.3535752
       objectReference: {fileID: 0}
     - target: {fileID: 6308872725280228118, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Size.y
-      value: 0.3373196
+      value: 0.46919647
       objectReference: {fileID: 0}
     - target: {fileID: 6308872725280228118, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Size.z
@@ -249,11 +257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6308872725280228118, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Center.x
-      value: 0.023372049
+      value: 0.011597904
       objectReference: {fileID: 0}
     - target: {fileID: 6308872725280228118, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_Center.y
-      value: -0.10757173
+      value: -0.041633252
       objectReference: {fileID: 0}
     - target: {fileID: 6308872725280228118, guid: 799e78482282b98468eba1692da75489, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
@@ -323,14 +331,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  stoppingDistance: 4
+  stoppingDistance: 6
   retreatDistance: 3
   firePoint: {fileID: 2117279970558949853}
   enemyAnimation: {fileID: 4247577612588641944}
   fireEffect: {fileID: 3327284279331517867, guid: 66d366089ec377d488aec5a061c8f3f6, type: 3}
   flipFirePoint: {fileID: 7562528278010887320}
   waitTime: 1
-  startTimeBetweenShot: 1.5
+  startTimeBetweenShot: 2
   patrolDestination:
   - {fileID: 600940024728140734}
   - {fileID: 7885096216404032767}
