@@ -1609,6 +1609,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2094526514}
+    - target: {fileID: 477861328662767910, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 477861328662767910, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
+      propertyPath: m_Mass
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 477861328662767910, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
+      propertyPath: m_AngularDrag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 477861328662767910, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 520039171384824606, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -1676,6 +1692,10 @@ PrefabInstance:
     - target: {fileID: 2974132514931083090, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
       propertyPath: hitDamage
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334893512968437255, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
+      propertyPath: jumpHeight
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7784562119181107656, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
       propertyPath: m_Name
