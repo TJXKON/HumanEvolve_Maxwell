@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloorButton : MonoBehaviour
 {
-      public ControlPlatform platform; // Reference to the platform script
+      public ControlPlatform platform; 
 
     private bool isPressed = false;
 
@@ -14,7 +14,7 @@ public class FloorButton : MonoBehaviour
         {
             isPressed = true;
             platform.MoveLeft(true); // Move the platform left
-            platform.MoveRight(false); // Ensure the platform isn't moving right
+            platform.MoveRight(false); 
         }
     }
 
