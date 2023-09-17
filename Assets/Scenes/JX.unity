@@ -685,6 +685,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 560755710098254004, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 560755710098254004, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1498082849195859717, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2353812052187523977, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
       propertyPath: ArenaText
       value: 
@@ -693,6 +705,10 @@ PrefabInstance:
       propertyPath: counterText
       value: 
       objectReference: {fileID: 2038223730}
+    - target: {fileID: 2649880083179393815, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.67
+      objectReference: {fileID: 0}
     - target: {fileID: 3126442461682736036, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -740,6 +756,22 @@ PrefabInstance:
     - target: {fileID: 3772807487880465696, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
       propertyPath: m_Name
       value: Arena
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998664100054774722, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3998664100054774722, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373870134770613369, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
+      propertyPath: m_Size.x
+      value: 22.899443
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373870134770613369, guid: 4088a6558d3e6954680195a900e9d73b, type: 3}
+      propertyPath: m_Center.x
+      value: 3.0299826
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
