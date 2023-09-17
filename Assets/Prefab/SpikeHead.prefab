@@ -102,7 +102,7 @@ MonoBehaviour:
   damageAmount: 5
   knockbackForce: 35
   hitCooldown: 0.2
-  moveSpeed: 4
+  moveSpeed: 3
   moveDistance: 7
   pauseDuration: 0.5
 --- !u!65 &3161689053175507879
