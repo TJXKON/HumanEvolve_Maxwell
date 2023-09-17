@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformButton : MonoBehaviour
 {
-     public ControlPlatform platform; // Reference to the platform script
+     public ControlPlatform platform; 
 
     private bool isPressed = false;
 
@@ -13,7 +13,7 @@ public class PlatformButton : MonoBehaviour
         if (other.CompareTag("Player") && !isPressed)
         {
             isPressed = true;
-            platform.MoveLeft(false); // Ensure the platform isn't moving left
+            platform.MoveLeft(false); 
             platform.MoveRight(true); // Move the platform right
         }
     }
