@@ -1661,6 +1661,10 @@ PrefabInstance:
       propertyPath: maxHP
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 2974132514931083090, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
+      propertyPath: hitDamage
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7784562119181107656, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
       propertyPath: m_Name
       value: Boss
