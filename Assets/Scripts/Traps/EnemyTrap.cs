@@ -7,6 +7,8 @@ public class EnemyTrap : MonoBehaviour
       public int damageAmount = 10;
     public float knockbackForce = 40f;
     public float hitCooldown = 0.5f; // Cooldown period in seconds
+    public string collisionMessage = "Player collided with spike.";
+
 
     private float lastHitTime = 0f;
 
@@ -16,7 +18,7 @@ public class EnemyTrap : MonoBehaviour
         {
             PlayerStatusManager playerStatus = collision.gameObject.GetComponent<PlayerStatusManager>();
 
-            Debug.Log("Player collided with spike.");
+            Debug.Log(collisionMessage);
             if (playerStatus != null)
             {
                 playerStatus.currentHP -= damageAmount;
