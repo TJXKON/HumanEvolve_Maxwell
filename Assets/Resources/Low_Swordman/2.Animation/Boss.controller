@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00621a2485a083248b453b3abc7f4eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.4
+  speed: 2.8
   attackRange: 2
   playerObject: {fileID: 4228845245137039991, guid: d576344e25e390345b92c27b663036f5, type: 3}
 --- !u!91 &9100000
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00621a2485a083248b453b3abc7f4eb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.8
+  speed: 2.2
   attackRange: 4
   playerObject: {fileID: 4228845245137039991, guid: d576344e25e390345b92c27b663036f5, type: 3}
 --- !u!1101 &5439701457138128660
