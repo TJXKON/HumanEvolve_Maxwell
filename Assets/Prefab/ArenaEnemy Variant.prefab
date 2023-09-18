@@ -84,6 +84,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 5
   currentHP: 0
-  hitDamage: 3
+  hitDamage: 5
   dropItem: {fileID: 0}
   score: 0
