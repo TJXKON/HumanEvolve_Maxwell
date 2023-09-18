@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8784abd7db4e3e14f860bdff7844b926, type: 2}
     - target: {fileID: 6974494945789272056, guid: 7c82addff614eb749b3b1d6ad3b94cbc, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6974494945789272056, guid: 7c82addff614eb749b3b1d6ad3b94cbc, type: 3}
       propertyPath: m_LocalScale.x
@@ -813,7 +813,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2287269465549696969, guid: 606a5bedd21c630418da174c3aecb5e2, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2287269465549696969, guid: 606a5bedd21c630418da174c3aecb5e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1435,67 +1435,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de381ee6e98511646b2f478a71075527, type: 3}
---- !u!1001 &1561141610
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 26.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287269465549696969, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4144922047240548959, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
-      propertyPath: m_Name
-      value: MagicItem
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8efaba7683fb0cf4ebfbb51977157b9e, type: 3}
 --- !u!1001 &1772160884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1794,7 +1733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2461675325513132855, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2461675325513132855, guid: 3d7bf9a4eefbf6946bb407a5b72f6d32, type: 3}
       propertyPath: m_LocalScale.x
