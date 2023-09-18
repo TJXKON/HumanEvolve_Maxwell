@@ -24,19 +24,14 @@ public class Door : MonoBehaviour
         UpdateIndicators();
         Debug.Log("Door unlocked and opened.");
 
-        // Load the next scene here
-        LoadNextScene();
+        SceneManager.LoadScene("Boss Room");
     }
     else
     {
         Debug.Log("Door is locked.");
     }
 }
-private void LoadNextScene()
-{
-    // Load the scene named "Boss Room"
-    SceneManager.LoadScene("Boss Room");
-}
+
 
     private void UpdateIndicators()
     {
