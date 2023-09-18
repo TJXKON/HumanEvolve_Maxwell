@@ -7,13 +7,13 @@ public class ControlPlatform : MonoBehaviour
     private bool isMovingLeft = false;
     private bool isMovingRight = false;
 
-    public float moveSpeed = 5.0f; // Adjust this speed as needed
-    public float moveDistance = 5.0f; // The total distance the platform should move
+    public float moveSpeed = 5.0f; 
+    public float moveDistance = 5.0f; 
 
-    private float initialPositionX; // The initial X position of the platform
-    private float currentDistance = 0.0f; // The current distance the platform has moved
+    private float initialPositionX; 
+    private float currentDistance = 0.0f; 
 
-    // Reference to the player
+    
     private Transform playerTransform;
 
     private void Start()
@@ -76,7 +76,7 @@ public class ControlPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Set the player as a child of the platform
+            
             playerTransform = collision.transform;
             playerTransform.SetParent(transform);
         }
@@ -86,7 +86,7 @@ public class ControlPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Release the player from being a child of the platform
+            
             playerTransform.SetParent(null);
             playerTransform = null;
         }

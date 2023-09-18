@@ -1713,10 +1713,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1102511643481700668, guid: cb2298f4c8d8c6d4e913d8c748d3e6be, type: 3}
-      propertyPath: retreatDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1102511643481700668, guid: cb2298f4c8d8c6d4e913d8c748d3e6be, type: 3}
       propertyPath: stoppingDistance
       value: 6
       objectReference: {fileID: 0}
@@ -1751,10 +1747,6 @@ PrefabInstance:
     - target: {fileID: 3171468686564665011, guid: cb2298f4c8d8c6d4e913d8c748d3e6be, type: 3}
       propertyPath: m_Name
       value: Fireman
-      objectReference: {fileID: 0}
-    - target: {fileID: 4182242854319493363, guid: cb2298f4c8d8c6d4e913d8c748d3e6be, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6151467321378294224, guid: cb2298f4c8d8c6d4e913d8c748d3e6be, type: 3}
       propertyPath: maxHP
