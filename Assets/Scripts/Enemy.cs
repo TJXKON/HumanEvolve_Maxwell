@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     public int score = 20;
     private bool playerIframe = false;
-    private static GameObject thisEnemy;
+    protected GameObject thisEnemy;
 
     void Awake()
     {
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         currentHP-=dmg;
     }
 
-    void defeat(){
+    protected virtual void defeat(){
         thisEnemy = gameObject;
         GameObject.Find("GameManager").GetComponent<Scoring>().addScore(score);
         Destroy(thisEnemy);
