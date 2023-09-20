@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arenaEnemy: {fileID: 433888121059279687, guid: 119fcce5a07dee344b08bd6c29249dd4, type: 3}
   interval: 1.1
-  offset: 30
+  offset: 20
 --- !u!1 &3436539653876914032
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arenaEnemy: {fileID: 433888121059279687, guid: 119fcce5a07dee344b08bd6c29249dd4, type: 3}
   interval: 1.3
-  offset: 15
+  offset: 12
 --- !u!1 &3772807487880465696
 GameObject:
   m_ObjectHideFlags: 0
