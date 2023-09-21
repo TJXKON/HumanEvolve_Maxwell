@@ -22,3 +22,15 @@ Reminder: Please do not make any changes directly in main branch to avoid any sc
 
 #Asset Resources Used
 Character - https://assetstore.unity.com/packages/2d/characters/simple-2d-platformer-assets-pack-188518#content
+
+Brackeys/Health-Bar
+
+Hovi Studio/Procedural Fire
+
+Hovi Studio/Magic Effects FREE
+
+Unity Technologies/Legacy Particle Pack
+
+Erana Iasana_assets_FXes
+
+Homeless/2D SKILLS ICON SET - HANDPAINTED
