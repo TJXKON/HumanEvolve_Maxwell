@@ -5544,7 +5544,7 @@ PrefabInstance:
     - target: {fileID: 3681403678330282984, guid: 0533a2d92485f6d4dad6e2b7974221f7, type: 3}
       propertyPath: character
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1292317607}
     - target: {fileID: 3681403678330282984, guid: 0533a2d92485f6d4dad6e2b7974221f7, type: 3}
       propertyPath: healAmount
       value: 15
