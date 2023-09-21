@@ -31,7 +31,11 @@ public class PlayerStatusManager : MonoBehaviour
     }
     void Update() {
         if (currentHP<=0){
-            FindObjectOfType<GameManager>().gameOver();
+            GameOver gameOverScript = FindObjectOfType<GameOver>();
+            if (gameOverScript != null)
+            {
+                gameOverScript.ShowGameOverDialog();
+            }
         }
         hpBar.setHp(currentHP);
 
