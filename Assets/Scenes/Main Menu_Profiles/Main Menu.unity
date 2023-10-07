@@ -6144,7 +6144,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 769597081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bed61ad3e4a745146b0a985b2a8a707d, type: 3}
+  m_Script: {fileID: 11500000, guid: ff7f1fda05fee7b4c93cccb8e0586f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myMixer: {fileID: 24100000, guid: 5324241e9ef954442bbff3294ca733a9, type: 2}
@@ -6160,7 +6160,7 @@ MonoBehaviour:
   resolutionDropdown: {fileID: 563551590}
   brightnessSlider: {fileID: 202465534}
   brightnessTextValue: {fileID: 63710376}
-  defaultBrightness: 1.2
+  defaultBrightness: 1
   brightness: {fileID: 11400000, guid: 1fb7f66bdc953194a8fd745c5acf2edc, type: 2}
   qualityDropdown: {fileID: 1605997800}
   fullScreenToggle: {fileID: 1307174931}

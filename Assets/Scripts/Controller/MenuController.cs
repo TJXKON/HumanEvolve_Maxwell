@@ -26,11 +26,11 @@ public class MainMenu : MonoBehaviour
     private Resolution[] resolutions;
 
     [Header("Graphics Settings")]
-    [SerializeField] private Slider brightnessSlider;
-    [SerializeField] private TMP_Text brightnessTextValue;
-    [SerializeField] private float defaultBrightness = 1;
-    [SerializeField] private PostProcessProfile brightness;
-    AutoExposure exposure;
+    public Slider brightnessSlider;
+    public TMP_Text brightnessTextValue;
+    public float defaultBrightness = 1.0f;
+    public PostProcessProfile brightness;
+    private AutoExposure exposure;
     [Space(10)]
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] private Toggle fullScreenToggle;
@@ -41,12 +41,12 @@ public class MainMenu : MonoBehaviour
     [Header("Gameplay Settings")]
     [SerializeField] private Slider gameSpeedSlider = null;
     [SerializeField] private TMP_Text gameSpeedTextValue;
-    [SerializeField] private float defaultGameSpeed= 1.0f;
+    [SerializeField] private float defaultGameSpeed = 1.0f;
+
 
     [Header("Levels To Load")]
-    //public string newGameLevel;
-    private string levelToLoad;
-    [SerializeField] private GameObject noSavedGameDialog = null;
+    public GameObject LevelPanel;
+
 
     public void SetMasterVolume()
     {
@@ -132,16 +132,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGameDialogYes()
     {
-        if (PlayerPrefs.HasKey("SavedLevel"))
-        {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            //PlayerPrefs.SetString("SavedLevel,1");
-            SceneManager.LoadScene(levelToLoad);
-        }
-        else
-        {
-            noSavedGameDialog.SetActive(true);
-        }
+        ActivateLevelPanel();
     }
 
     public void ExitButton()
@@ -152,9 +143,34 @@ public class MainMenu : MonoBehaviour
 
     public void SetBrightness(float brightnessValue)
     {
-        exposure.keyValue.value=brightnessValue;
-        brightnessTextValue.text = brightnessValue.ToString("0.0");
+        if (exposure != null)
+        {
+            exposure.keyValue.value = brightnessValue;
+            brightnessTextValue.text = brightnessValue.ToString("0.0");
+
+            // Save brightness value to PlayerPrefs
+            PlayerPrefs.SetFloat("masterBrightness", brightnessValue);
+        }
     }
+
+    private void LoadBrightness()
+    {
+        if (PlayerPrefs.HasKey("masterBrightness"))
+        {
+            float localBrightness = PlayerPrefs.GetFloat("masterBrightness");
+
+            brightnessTextValue.text = localBrightness.ToString("0.0");
+            brightnessSlider.value = localBrightness;
+        }
+        else
+        {
+            brightnessTextValue.text = defaultBrightness.ToString("0.0");
+            brightnessSlider.value = defaultBrightness;
+            PlayerPrefs.SetFloat("masterBrightness", defaultBrightness);
+        }
+    }
+
+
 
     public void SetFullScreen(bool FullScreen)
     {
@@ -163,7 +179,6 @@ public class MainMenu : MonoBehaviour
 
     public void SetQualityLevel(int qualityIndex)
     {
-        Debug.Log(qualityLevel);
         qualityLevel = qualityIndex;
     }
 
@@ -181,27 +196,62 @@ public class MainMenu : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-    public void SetGameSpeed(float speedValue)
+    // Handle changes to the game speed slider
+    public void OnGameSpeedChanged(float newSpeed)
     {
-        float newSpeed =  speedValue;
-        Time.timeScale = newSpeed;
-        gameSpeedTextValue.text = newSpeed.ToString("0.0");
+        // Update the game speed and save it to PlayerPrefs
+        GameManager.gameSpeed = newSpeed;
+        SaveGameSpeed();
+
+        // Update the game speed text value
+        UpdateGameSpeedText(newSpeed);
+    }
+
+    // Update the game speed text value
+    private void UpdateGameSpeedText(float speed)
+    {
+        gameSpeedTextValue.text = speed.ToString("0.0");
+    }
+
+    // Save the game speed to PlayerPrefs
+    private void SaveGameSpeed()
+    {
+        PlayerPrefs.SetFloat("gameSpeed", GameManager.gameSpeed);
+    }
+
+    // Load the game speed from PlayerPrefs
+    private void LoadGameSpeed()
+    {
+        if (PlayerPrefs.HasKey("gameSpeed"))
+        {
+            GameManager.gameSpeed = PlayerPrefs.GetFloat("gameSpeed");
+        }
+        else
+        {
+            GameManager.gameSpeed = defaultGameSpeed;
+            PlayerPrefs.SetFloat("gameSpeed", defaultGameSpeed);
+        }
     }
 
     private void Start()
     {
-        
         LoadVolume();
-        if(gameSpeedSlider != null)
-        {
-            gameSpeedSlider.onValueChanged.AddListener(SetGameSpeed);
-        }
+        LoadGameSpeed();
 
- 
-        if (brightnessSlider != null)
+        // Set the game speed slider's initial value
+        gameSpeedSlider.value = GameManager.gameSpeed;
+        UpdateGameSpeedText(GameManager.gameSpeed);
+
+        exposure = brightness.GetSetting<AutoExposure>();
+
+        // Load brightness value from PlayerPrefs
+        float brightnessValue = PlayerPrefs.GetFloat("masterBrightness", defaultBrightness);
+
+        if (exposure != null)
         {
-            brightness.TryGetSettings(out exposure);
-            SetBrightness(brightnessSlider.value);
+            exposure.keyValue.value = brightnessValue;
+            brightnessSlider.value = brightnessValue;
+            brightnessTextValue.text = brightnessValue.ToString("0.0");
         }
 
         qualityDropdown.onValueChanged.AddListener(SetQualityLevel);
@@ -241,4 +291,12 @@ public class MainMenu : MonoBehaviour
             resolutionDropdown.RefreshShownValue();
         }
     }
+
+    public void ActivateLevelPanel()
+    {
+        Debug.Log("Level Panel Called");
+        LevelPanel.SetActive(true);
+    }
+
+
 }
